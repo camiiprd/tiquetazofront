@@ -47,7 +47,7 @@ const Footer = () => {
             <a href="https://github.com/diegoandrespizarro" target="_blank" rel="noopener noreferrer">
               <i className="icon bi-github"></i>
             </a>
-          </li>
+          </li>   
           <li>
             Johana Abigail Ale
 
@@ -86,10 +86,8 @@ const Footer = () => {
             <a href="https://github.com/ValeLenci" target="_blank" rel="noopener noreferrer">
               <i className="icon bi-github"></i>
             </a>
-          </li>
-          
-
-        </ul>
+          </li>         
+        </ul>   
       </div>
 
        <div className="footer-section">
