@@ -6,6 +6,7 @@ import React from 'react';
 import { Routes,Route } from 'react-router-dom';
 import CardsAbautUs from './components/AboutUs/CardsAbautUs.jsx';
 import Footer from './components/Footer/Footer.jsx';
+import RollingCode from './components/RollingCode/Rolling.jsx'
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
       <Routes>
       <Route path="/desarrolladores" element={<CardsAbautUs cards={App} />} />
       </Routes>
+      <RollingCode/>
       <Footer/>
      
     </>
