@@ -50,6 +50,7 @@ display: inline-block;
   margin-bottom: 30px;
 }
 
+
 ul {
   list-style: none;
   padding: 0;
@@ -69,8 +70,6 @@ a .icon  {
   transition: color 0.3s ease;
   display: inline-block;
 }
-
-
 
 a :hover {
   color: #1d1a1a;
