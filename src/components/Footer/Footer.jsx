@@ -97,7 +97,7 @@ const Footer = () => {
         
       </div>
       <div className="footer-section2">
-        <h5 className='Text-Footer'><strong>Contacto</strong></h5>
+        <h5 className='Text-contact'><strong>Contacto</strong></h5>
         <p><i className="icon bi-envelope"></i> contacto@ejemplo.com</p>
         <p><i className="icon bi-telephone"></i> +54 11 1234 5678</p>
         <h5 className='footer-text'><strong>Muchas gracias por visitarnos!</strong></h5>
