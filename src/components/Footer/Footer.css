@@ -2,128 +2,79 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  background-color:  #561C24;
-  padding: 20px;
-  font-family: Arial, sans-serif;
+  background-color: #561C24;
+  padding: 20px 40px;
+  font-family: 'Roboto', sans-serif;
   border-top: 2px solid #E8D8C4;
-  height: 500px;
+  color: #E8D8C4;
+  flex-wrap: wrap;
 }
 
 .footer-section {
   flex: 1;
-  margin-right: 20px;
+  margin: 20px;
 }
 
-.footer-section .Text-Footer {
-  margin-left: 140px;
-  margin-top: 30px;
-}
-
-.footer-section2 {
-  flex: 1;
-  text-align: center;
-}
-
-.footer-section2 .icon{
-display: inline-block;
-}
-
-.Text-Footer {
+.footer-section h5 {
   color: #E8D8C4;
-  margin-bottom: 30px;
-  font-size: 20px;
+  font-size: 22px;
 }
 
-.footer-section2 .footer-text{
-  color: #E8D8C4;
-  margin-top: 50px;
-  font-size: 20px;
-  margin-right: 20px;
-
-
+.developer-list {
+  margin-left: 20px;
 }
 
-.footer-section2 .Text-contact{
-  margin-right: 50px;
-  color: #E8D8C4;
-  margin-top: 35px;
-  margin-bottom: 30px;
+.developer-list li {
+  margin-bottom: 15px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
 }
 
-
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-li {
-  margin-bottom: 20px;
-  font-size: 14px;
-  color: #E8D8C4;
-  margin-left: 80px;
-}
-
-a .icon  {
-  color: #E8D8C4;
+.developer-list a {
   margin-left: 10px;
-  font-size: 18px;
+  color: #E8D8C4;
   transition: color 0.3s ease;
-  display: inline-block;
 }
 
-a :hover {
-  color: #1d1a1a;
-}
-
-.icon {
-  margin-right: 5px;
+.developer-list a:hover {
+  color: #ffd700;
 }
 
 .logo-footer {
-  max-width: 240px;
-  margin-top: 50px;
-  margin-left: 80px;
+  max-width: 180px;
+  margin-top: 40px;
 }
 
-p {
-  margin: 5px 0;
-  font-size: 14px;
-  color: #E8D8C4;
-  margin-right: 50px;
+.Text-contact {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.footer-text {
+  margin-top: 30px;
+  font-size: 18px;
 }
 
 .button-footer {
   background-color: #E8D8C4;
   color: #561C24;
-  padding: 10px 20px;
-  font-size: 14px;
-  border-radius: 10px;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 25px;
   cursor: pointer;
-  transition: 0.3s ease;
-  margin-right: 40px;
-  
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .button-footer:hover {
   background-color: #561C24;
   color: #E8D8C4;
-  border-color: #1d1a1a;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .footer {
     flex-direction: column;
     align-items: center;
-    text-align: center;
-  }
-
-  .footer-section {
-    margin-bottom: 20px;
-    margin-right: 0;
-  }
-
-  .footer-section2 {
-    margin-bottom: 0;
+    padding: 20px;
   }
 }
