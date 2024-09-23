@@ -16,7 +16,7 @@ const CardsAbautUs = () => {
     },
     {
       title: "Diego Pizarro",
-      text: "ApplyESL will be officially closing at the end of this month. Applications will be available through September 27, 2024. To apply to any of our partners beginning next month, and for any questions you may have about your application, contact the school's admissions office for assistance. Our team thanks you for your understanding and wishes you the best of luck with your future study-abroad plans!",
+      text: "Hola, soy Diego Pizarro. Me dedico al desarrollo web. Me gusta encontrar soluciones simples y útiles en cada proyecto, y siempre busco aprender algo nuevo para mejorar. Disfruto trabajando en equipo y colaborando en proyectos que realmente aporten valor.",
       img: "./src/components/AboutUs/assetsCardsAboutUs/Diego Pizarro.jpg",
       githubLink:"https://github.com/diegoandrespizarro"
     },
@@ -46,7 +46,7 @@ const CardsAbautUs = () => {
       title: "Valentino",
       text: "ApplyESL will be officially closing at the end of this month. Applications will be available through September 27, 2024. To apply to any of our partners beginning next month, and for any questions you may have about your application, contact the school's admissions office for assistance. Our team thanks you for your understanding and wishes you the best of luck with your future study-abroad plans!",
       img: "./src/components/AboutUs/assetsCardsAboutUs/Valentino.jpg",
-      githubLink:""
+      githubLink:"https://github.com/ValeLenci"
     },
     {
       id: 8,
