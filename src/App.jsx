@@ -7,6 +7,7 @@ import Footer from './components/Footer/Footer.jsx';
 import CardsAbautUs from './Pages/AboutUs/CardsAbautUs.jsx';
 import RollingCode from './Pages/RollingCode/Rolling.jsx';
 import EventsSection from './Pages/HomeCards/HomeCards.jsx';
+import ShoppingCart from './Pages/ShoppingCart/ShoppingCart.jsx';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           } 
           />
       <Route path='/homecards' element={<EventsSection/>}/>
+      <Route path="/carrito" element={<ShoppingCart />} />
       </Routes>
       
       <Footer/>
