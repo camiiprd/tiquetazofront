@@ -2,9 +2,10 @@
   display: flex;
   justify-content: space-between;
   background-color:  #561C24;
-  padding: 20px;
+  padding: 5px;
   font-family: Arial, sans-serif;
   border-top: 2px solid #E8D8C4;
+  margin-bottom: 0;
 }
 
 .footer-section {
@@ -116,7 +117,7 @@ p {
   border-color: #1d1a1a;
 }
 
-/* Responsive */
+
 @media (max-width: 768px) {
   .footer {
     flex-direction: column;
@@ -130,6 +131,11 @@ p {
   .footer li {
     justify-content: flex-start; 
   }
+  .logo-footer{
+    width: 150px;
+    margin-right: 50px;
+  }
+  
 }
 
 
