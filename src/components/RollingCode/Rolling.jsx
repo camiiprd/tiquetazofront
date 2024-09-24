@@ -1,7 +1,7 @@
 import React from "react";
 import '../RollingCode/Rolling.css'
 
-function App() {
+function RollingCode() {
   return (
     <section className="hero-section">
       <div className="content">
@@ -16,4 +16,4 @@ function App() {
   );
 }
 
-export default App;
+export default RollingCode;

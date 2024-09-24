@@ -45,7 +45,7 @@
     color: #E8D8C4;
   }
   
-  /*Responsividad */
+  
   @media (max-width: 768px) {
     h1 {
       font-size: 2.5rem; 

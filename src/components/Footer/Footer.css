@@ -116,7 +116,7 @@ p {
   border-color: #1d1a1a;
 }
 
-/* Responsive */
+
 @media (max-width: 768px) {
   .footer {
     flex-direction: column;
