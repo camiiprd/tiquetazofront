@@ -1,12 +1,13 @@
 import './App.css'
 import NavBar from "./components/Navbar/NavBar.jsx";
-import HomeCards from "./components/HomeCards/HomeCards.jsx"
 import Slider from './components/Slider/Slider.jsx';
 import React from 'react';
 import { Routes,Route } from 'react-router-dom';
-import CardsAbautUs from './components/AboutUs/CardsAbautUs.jsx';
 import Footer from './components/Footer/Footer.jsx';
-import RollingCode from './components/RollingCode/Rolling.jsx'
+import CardsAbautUs from './Pages/AboutUs/CardsAbautUs.jsx';
+import RollingCode from './Pages/RollingCode/Rolling.jsx';
+import EventsSection from './Pages/HomeCards/HomeCards.jsx';
+
 
 function App() {
 
@@ -14,7 +15,6 @@ function App() {
     <>
       <NavBar/>
       <Slider/>
-      <HomeCards/>
       <Routes>
       <Route 
           path="/desarrolladores" 
@@ -25,6 +25,7 @@ function App() {
             </>
           } 
           />
+      <Route path='homecards' element={<EventsSection/>}/>
       </Routes>
       
       <Footer/>

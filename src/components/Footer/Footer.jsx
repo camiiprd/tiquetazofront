@@ -1,10 +1,17 @@
 import React from 'react';
 import '../Footer/Footer.css';
 import contactImage from '../../assets/images/logo.png'; 
+import { useNavigate } from 'react-router-dom';
 
 
 
 const Footer = () => {
+
+  const navigate = useNavigate();
+
+  const handleNavigate = () =>{
+    navigate('/desarrolladores')
+  }
   return (
     <div className="footer">
       <div className="footer-section">
@@ -100,7 +107,7 @@ const Footer = () => {
         <p><i className="icon bi-telephone"></i> +54 11 1234 5678</p>
         <h5 className='footer-text'><strong>Muchas gracias por visitarnos!</strong></h5>
         <p>Conocé mas sobre nosotros presionando el siguiente botón.</p>
-        <button className='button-footer'><strong>Sobre Nosotros</strong></button>
+        <button onClick={handleNavigate} className='button-footer'><strong>Sobre Nosotros</strong></button>
       </div>
     </div>
   );
