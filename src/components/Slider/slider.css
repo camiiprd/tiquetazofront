@@ -3,7 +3,7 @@
     object-fit: cover; 
   } 
   
-  /* slider.css */
+ 
   .slider-images { 
     position: relative; 
     max-width: 100%; 
@@ -30,7 +30,7 @@
     object-fit: cover; 
   } 
   
-  /* Consultas de medios */
+  
   @media only screen and (max-width: 1200px) { 
     .slider-images { 
       height: 60vh; 

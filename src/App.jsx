@@ -16,9 +16,17 @@ function App() {
       <Slider/>
       <HomeCards/>
       <Routes>
-      <Route path="/desarrolladores" element={<CardsAbautUs cards={App} />} />
+      <Route 
+          path="/desarrolladores" 
+          element={
+            <>
+              <CardsAbautUs  />
+              <RollingCode  />
+            </>
+          } 
+          />
       </Routes>
-      <RollingCode/>
+      
       <Footer/>
      
     </>
