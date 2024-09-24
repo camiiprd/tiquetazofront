@@ -1,14 +1,21 @@
 import React from "react";
 import '../NavBar/NavBar.css';
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faShoppingCart, faPhone, faAddressBook, } from '@fortawesome/free-solid-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import logo from "../../assets/images/logo.png"
 const NavBar = () => {
+
+  const navigate = useNavigate();
+
+  const handleNavigate = (path) =>{
+    navigate(path)
+  }
   return (
-    <nav className="navbar">
+    <nav className=" navbar">
       {/* Logo */}
-      <div className="navbar-logo">
+      <div onClick={() => handleNavigate('')} className="icon navbar-logo">
         <img src={logo} alt="Logo" />
       </div>
 
@@ -17,10 +24,10 @@ const NavBar = () => {
         <input type="text" placeholder="Buscar eventos..." />
         <FontAwesomeIcon icon={faSearch} className="search-icon"/>
       </div>
-
+ 
       {/* Iconos de login y carrito */}
       <div className="navbar-icons">
-      <div className="icon">
+      <div onClick={() => handleNavigate('/desarrolladores')}className="icon">
           <FontAwesomeIcon icon={faPhone} /> {<i class="fa-solid fa-phone"></i>}
           <span>Sobre nosotros</span>
         </div>

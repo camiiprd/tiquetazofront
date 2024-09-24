@@ -33,7 +33,7 @@ const CardItem = ({ title, text, img, githubLink }) => {
             variant="top"
             src={img}
             className="img-fluid"
-            style={{ height: "200px", objectFit: "cover" }}
+            style={{ height: "350px", objectFit: "cover" }}
           />
         </div>
         <Card.Body className="text-color d-flex flex-column">
@@ -54,7 +54,7 @@ const CardItem = ({ title, text, img, githubLink }) => {
           )}
 
           <Button
-            className="efect-buton bg-transparent"
+            className="text-white efect-buton bg-transparent"
             variant="light"
             href={githubLink}
             target="_blank"
