@@ -1,5 +1,5 @@
 import React from 'react';
-import "../HomeCards/HomeCards.css"
+import "../../Pages/HomeCards/HomeCards.css"
 
 const events = [
   { id: 1, date: '07 SEP', title: 'NORTE ROCK 🎸', description: 'AV. PERON Y BASCARY / YERBA BUENA - TUCUMÁN' },

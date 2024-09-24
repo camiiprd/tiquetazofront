@@ -7,9 +7,9 @@
   .slider-images { 
     position: relative; 
     max-width: 100%; 
-    height: 400px; 
+
     overflow: hidden; 
-    margin-top: 200px;
+    margin-top: 5px;
   } 
   
   .slide { 
@@ -42,7 +42,7 @@
       height: 50vh; 
     } 
     .image { 
-      width: 90%; 
+      width: 100%; 
     } 
   } 
   
