@@ -31,7 +31,7 @@ const Footer = () => {
             <a href="https://www.linkedin.com/in/mariano-godoy-230039329?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer">
               <i className="icon bi-linkedin"></i>
             </a>
-            <a href="https://github.com/YcMedsS" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/Mariano-Godoy" target="_blank" rel="noopener noreferrer">
               <i className="icon bi-github"></i>
             </a>
           </li>

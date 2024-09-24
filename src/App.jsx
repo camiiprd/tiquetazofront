@@ -25,7 +25,7 @@ function App() {
             </>
           } 
           />
-      <Route path='homecards' element={<EventsSection/>}/>
+      <Route path='/homecards' element={<EventsSection/>}/>
       </Routes>
       
       <Footer/>
