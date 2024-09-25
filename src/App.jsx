@@ -9,6 +9,8 @@ import CardsAbautUs from "./Pages/AboutUs/CardsAbautUs.jsx";
 import RollingCode from "./Pages/RollingCode/Rolling.jsx";
 import EventsSection from "./Pages/HomeCards/HomeCards.jsx";
 import ContactPage from "./Pages/Contact/Contact.jsx";
+import UserDash from "./Pages/Dashboard/Dashboard.user.jsx";
+import Event from "./Pages/Dashboard/Dashboard.event.jsx";
 
 function App() {
   return (
@@ -39,6 +41,17 @@ function App() {
           element={
             <>
               <ContactPage
+               />
+            </>
+          }
+        />
+        <Route
+          path="/dash"
+          element={
+            <>
+              <UserDash
+               />
+               <Event
                />
             </>
           }

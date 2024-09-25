@@ -1,5 +1,5 @@
 /* General Styles */
-body {
+/* body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
   margin: 0;
@@ -7,9 +7,9 @@ body {
 }
 
 .container {
-  max-width: 1200px; /* Limita el ancho máximo del contenedor */
-  margin: 0 auto; /* Centra el contenedor en la pantalla */
-  padding: 20px; /* Espacio en los lados */
+  max-width: 1200px; 
+  margin: 0 auto;
+  padding: 20px; 
 }
 
 h1, h2 {
@@ -102,10 +102,10 @@ button:hover {
 
 .btn-primary:hover {
   background-color: #2980b9;
-}
+} */
 
 /* Event & Categories Styling */
-form .category-select {
+/* form .category-select {
   width: 100%;
   margin-bottom: 20px;
 }
@@ -163,4 +163,4 @@ img {
 .category-card h3 {
   color: #333;
   margin-bottom: 10px;
-}
+} */
