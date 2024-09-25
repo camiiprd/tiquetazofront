@@ -4,7 +4,7 @@ import './ShoppingCart.css';
 
 const ShoppingCart = () => {
   const [cartItems, setCartItems] = useState([
-    { id: 1, name: 'Concierto A', price: 100 },//Esto se debe eliminar y dejar vasio es solo paramostrar como es
+    { id: 1, name: 'Concierto A', price: 100 }, //Esto se debe eliminar y dejar vasio es solo paramostrar como es
     { id: 2, name: 'Concierto B', price: 150 },
   ]);
 
