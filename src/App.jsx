@@ -1,7 +1,7 @@
 import "./App.css"; 
 import NavBar from "./components/Navbar/NavBar.jsx";
 import Slider from "./components/Slider/Slider.jsx";
-import React from "react";
+import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer/Footer.jsx";
@@ -14,12 +14,16 @@ import Event from "./Pages/Dashboard/Dashboard.event.jsx";
 import MerchCards from './Pages/Merchandising/MerchCards.jsx'; 
 import Login from "./Pages/login/Login.jsx";
 import Register from "./Pages/register/Register.jsx";
+import Cart from "./Pages/cart/Cart.jsx";
 
 
 function App() {
+
+  const [cartItems, setCartItems] = useState([])
+
   return (
     <>
-      <NavBar />
+      <NavBar cartItems={cartItems} setCartItems={setCartItems}/>
 
       <Routes>
         <Route
@@ -27,7 +31,7 @@ function App() {
           element={
             <>
               <Slider />
-              <EventsSection />
+              <EventsSection cartItems={cartItems} setCartItems={setCartItems}/>
             </>
           }
         />
@@ -84,6 +88,12 @@ function App() {
             </>
           }
           
+        />
+        <Route
+          path="/cart"
+          element={
+            <Cart cartItems={cartItems} setCartItems={setCartItems} />
+          }
         />
       </Routes>
 

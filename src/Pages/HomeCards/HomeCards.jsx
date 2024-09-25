@@ -21,17 +21,35 @@ const events = [
   
 ];
 
-const EventCard = ({ date, title, description ,imageUrl}) => (
-  <div className="event-card ">
-   <img src={imageUrl} alt={title} className=" img-fluid event-image" />
-       <div className="event-content">
-      <h2>{date}</h2>
-      <h3>{title}</h3>
-      <p>{description}</p>
-      <button className="event-button">COMPRAR</button>
+const EventCard = ({ date, title, description, imageUrl, id, setCartItems }) => {
+  const handleBuyClick = () => {
+    setCartItems(prevItems => {
+      const itemIndex = prevItems.findIndex(item => item.id === id);
+      if (itemIndex >= 0) {
+        // Si ya está en el carrito, aumentar la cantidad
+        const updatedItems = [...prevItems];
+        updatedItems[itemIndex].quantity += 1;
+        return updatedItems;
+      } else {
+        // Si no está en el carrito, agregarlo
+        return [...prevItems, { id, date, title, description, imageUrl, quantity: 1 }];
+      }
+    });
+  };
+
+  return (
+    <div className="event-card">
+      <img src={imageUrl} alt={title} className="img-fluid event-image" />
+      <div className="event-content">
+        <h2>{date}</h2>
+        <h3>{title}</h3>
+        <p>{description}</p>
+        <button className="event-button" onClick={handleBuyClick}>COMPRAR</button>
+      </div>
     </div>
-  </div>
-);
+  );
+};
+
 
 const EventsSection = () => (
   <section className="events-section">
