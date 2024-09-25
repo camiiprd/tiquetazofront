@@ -1,6 +1,7 @@
 import "./App.css";
 import NavBar from "./components/Navbar/NavBar.jsx";
 import Slider from "./components/Slider/Slider.jsx";
+// eslint-disable-next-line no-unused-vars
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer/Footer.jsx";
