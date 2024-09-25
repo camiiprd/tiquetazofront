@@ -6,6 +6,10 @@ import "../../styles/Auth.css";
 
 const Register = () => {
   const navigate = useNavigate(); // Crear una instancia de navigate
+
+  const handleNavigate = () => {
+    navigate('/login')
+  }
   const [formData, setFormData] = useState({
     userName: "",
     password: "",
@@ -229,6 +233,7 @@ const Register = () => {
         )}
 
         <button type="submit">Registrar</button>
+        <button onClick={handleNavigate} type="submit">Iniciar Sesión</button>
       </form>
     </div>
   );
