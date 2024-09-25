@@ -8,8 +8,7 @@ import Footer from "./components/Footer/Footer.jsx";
 import CardsAbautUs from "./Pages/AboutUs/CardsAbautUs.jsx";
 import RollingCode from "./Pages/RollingCode/Rolling.jsx";
 import EventsSection from "./Pages/HomeCards/HomeCards.jsx";
-import UserDash from "./Pages/Dashboard/dashboard.user.jsx";
-import Event from "./Pages/Dashboard/dashboard.event.jsx";
+
 
 function App() {
   return (
@@ -35,15 +34,7 @@ function App() {
             </>
           }
         />
-        <Route
-          path="/dashboard"
-          element={
-            <>
-              <Event/>
-              <UserDash/>
-            </>
-          }
-        />
+        
       </Routes>
 
       <Footer />
