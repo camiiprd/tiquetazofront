@@ -48,7 +48,7 @@ const merchItems = [
     description: "Taza de cerámica con diseño exclusivo.",
     price: "$10",
     image:
-      "https://dehoynopasa.com.ar/storage/2023/09/Divididos_02N_11zon-scaled.webp",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3ss_-hx74yJYxXGAS4XDHHXheDwtiSFpGqw&s",
   },
   {
     id: 7,

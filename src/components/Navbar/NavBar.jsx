@@ -24,6 +24,8 @@ const NavBar = () => {
         <input type="text" placeholder="Buscar eventos..." />
         <FontAwesomeIcon icon={faSearch} className="search-icon"/>
       </div>
+      
+      
  
       {/* Iconos de login y carrito */}
       <div className="navbar-icons">
