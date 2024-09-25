@@ -68,29 +68,7 @@ const merchItems = [
   },
 ];
 
-/*const MerchCards = () => {
-  return (
-    <Container>
-      <Row>
-        {merchItems.map((item) => (
-          <Col md={4} key={item.id} className="mt-4 mb-4">
-            <Card className="merch-card">
-              <Card.Img variant="top" src={item.image} alt={item.title} />
-              <Card.Body>
-                <Card.Title>{item.title}</Card.Title>
-                <Card.Text>{item.description}</Card.Text>
-                <Card.Text className="price">{item.price}</Card.Text>
-                <Button variant="primary">Comprar</Button>
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
-      </Row>
-    </Container>
-  );
-};
 
-export default MerchCards;*/
 const MerchCards = () => {
   return (
     <Container>
