@@ -12,6 +12,9 @@ import ContactPage from "./Pages/Contact/Contact.jsx";
 import UserDash from "./Pages/Dashboard/Dashboard.user.jsx";
 import Event from "./Pages/Dashboard/Dashboard.event.jsx";
 import MerchCards from './Pages/Merchandising/MerchCards.jsx'; 
+import Login from "./Pages/login/Login.jsx";
+import Register from "./Pages/register/Register.jsx";
+
 
 function App() {
   return (
@@ -62,6 +65,25 @@ function App() {
               <MerchCards />
             </>
           }
+        />
+        {/*ruta para login y register */}
+        <Route
+          path="/login"
+          element={
+            <>
+              <Login />
+            </>
+          }
+          
+        />
+         <Route
+          path="/register"
+          element={
+            <>
+              < Register/>
+            </>
+          }
+          
         />
       </Routes>
 
