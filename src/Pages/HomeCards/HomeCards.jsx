@@ -4,8 +4,9 @@ import "../../Pages/HomeCards/HomeCards.css";
 import PropTypes from 'prop-types'; // Importa PropTypes para la validación
 const apiEventUrl = 'http://localhost:4000/api/eventos'; // URL de la API de eventos
 
-const EventCard = ({ date, title, description, imageUrl }) => (
-  <div className="event-card ">
+const EventCard = ({ date, title, description ,imageUrl}) => (
+
+<div className="event-card ">
     <img src={imageUrl} alt={title} className="img-fluid event-image" />
     <div className="event-content">
       <h2>{date}</h2>
