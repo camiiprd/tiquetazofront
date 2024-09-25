@@ -8,7 +8,7 @@ import Footer from "./components/Footer/Footer.jsx";
 import CardsAbautUs from "./Pages/AboutUs/CardsAbautUs.jsx";
 import RollingCode from "./Pages/RollingCode/Rolling.jsx";
 import EventsSection from "./Pages/HomeCards/HomeCards.jsx";
-
+import ContactPage from "./Pages/Contact/Contact.jsx";
 
 function App() {
   return (
@@ -34,7 +34,15 @@ function App() {
             </>
           }
         />
-        
+         <Route
+          path="/contact"
+          element={
+            <>
+              <ContactPage
+               />
+            </>
+          }
+        />
       </Routes>
 
       <Footer />
