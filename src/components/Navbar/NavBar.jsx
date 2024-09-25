@@ -37,7 +37,7 @@ const NavBar = () => {
           <FontAwesomeIcon icon={faAddressBook} /> {<i class="fa-solid fa-address-book"></i>}
           <span>Contactanos</span>
         </div>
-        <div className="icon">
+        <div onClick={() => handleNavigate('/login')} className="icon">
           <FontAwesomeIcon icon={faUser} /> {<i class="fa-solid fa-user fa-beat"></i>}
           <span>Ingresar!</span>
         </div>

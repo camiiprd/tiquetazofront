@@ -9,6 +9,10 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const navigate = useNavigate(); // Crear una instancia de navigate
 
+    const handleNavigate = () => {
+        navigate('/register')
+    }
+
     const handleLogin = async (e) => {
         e.preventDefault();
 
@@ -58,6 +62,7 @@ const Login = () => {
                     required
                 />
                 <button type="submit">Iniciar Sesión</button>
+                <button onClick={handleNavigate} type="submit">Registrar</button>
             </form>
         </div>
     );
