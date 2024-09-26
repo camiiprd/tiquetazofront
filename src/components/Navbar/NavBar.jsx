@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import '../NavBar/NavBar.css';
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faShoppingCart, faPhone, faAddressBook, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faShoppingCart, faPhone, faAddressBook, faSearch, faShop } from '@fortawesome/free-solid-svg-icons';
 import logo from "../../assets/images/logo.png";
 import Swal from 'sweetalert'; // Importa SweetAlert
 
@@ -52,6 +52,10 @@ const NavBar = () => {
 
       {/* Iconos de login y carrito */}
       <div className="navbar-icons">
+        <div onClick={() => handleNavigate('/merch')} className="icon">
+        <FontAwesomeIcon icon={faShop} />
+          <span>Productos</span>
+        </div>
         <div onClick={() => handleNavigate('/desarrolladores')} className="icon">
           <FontAwesomeIcon icon={faPhone} />
           <span>Sobre nosotros</span>
