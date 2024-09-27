@@ -21,7 +21,7 @@ const merchItems = [
   {
     id: 3,
     title: "Taza",
-    description: "Taza de cerámica con diseño exclusivo.",
+    description: "Taza de cerámica con diseño.",
     price: "$10",
     image:
       "https://http2.mlstatic.com/D_Q_NP_2X_858454-MLA78085401617_072024-T.webp",
@@ -45,7 +45,7 @@ const merchItems = [
   {
     id: 6,
     title: "Taza",
-    description: "Taza de cerámica con diseño exclusivo.",
+    description: "Taza de cerámica con diseño.",
     price: "$10",
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3ss_-hx74yJYxXGAS4XDHHXheDwtiSFpGqw&s",
@@ -69,7 +69,7 @@ const merchItems = [
   {
     id: 9,
     title: "Taza",
-    description: "Taza de cerámica con diseño exclusivo.",
+    description: "Taza de cerámica con diseño.",
     price: "$10",
     image: "https://http2.mlstatic.com/D_659825-MLA77007715016_062024-O.jpg",
   },
@@ -77,14 +77,14 @@ const merchItems = [
 
 const MerchCards = () => {
   return (
-    <Container>
+    <Container id="merch-cards-container">
       <Row>
         {merchItems.map((item) => (
-          <Col xs={12} sm={6} md={4} className="mt-4 mb-4" key={item.id}>
+          <Col xs={12} sm={6} md={4} className=" mt-4 mb-4" key={item.id}>
             <Card className="merch-card">
               <Card.Img variant="top" src={item.image} alt={item.title} />
               <Card.Body>
-                <Card.Title>{item.title}</Card.Title>
+                <Card.Title >{item.title}</Card.Title>
                 <Card.Text>{item.description}</Card.Text>
                 <Card.Text className="price">{item.price}</Card.Text>
                 <div className="buy-button">
