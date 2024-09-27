@@ -1,21 +1,19 @@
-// src/components/Profile.jsx
 import React, { useState } from 'react';
-import '../UserProfile/Profile.css'; // Asegúrate de importar los estilos
+import '../UserProfile/Profile.css'; 
 
 function Profile() {
-  const defaultAvatar = 'https://via.placeholder.com/150'; // Avatar por defecto
+  const defaultAvatar = 'https://via.placeholder.com/150'; 
   const [user, setUser] = useState({
     name: 'Juan Perez',
     email: 'jperez@gmail.com',
     location: 'Tucuman, Argentina',
     phone: '+54 3815555555',
-    avatar: defaultAvatar, // Imagen por defecto
+    avatar: defaultAvatar, 
   });
 
-  const [isEditing, setIsEditing] = useState(false); // Controla el modo de edición
-  const [newAvatarUrl, setNewAvatarUrl] = useState(''); // Para almacenar la URL ingresada
+  const [isEditing, setIsEditing] = useState(false); 
+  const [newAvatarUrl, setNewAvatarUrl] = useState(''); 
 
-  // Maneja los cambios en el formulario de edición
   const handleInputChange = (e) => {
     setUser({
       ...user,
@@ -23,28 +21,26 @@ function Profile() {
     });
   };
 
-  // Permite cambiar la foto de perfil con una URL
   const handleAvatarUrlChange = () => {
     if (newAvatarUrl) {
       setUser({ ...user, avatar: newAvatarUrl });
-      setNewAvatarUrl(''); // Limpiamos el campo una vez aplicada la URL
+      setNewAvatarUrl(''); 
     }
   };
 
-  // Elimina la foto de perfil (reemplazando con avatar por defecto)
   const handleDeleteAvatar = () => {
     setUser({ ...user, avatar: defaultAvatar });
   };
 
-  // Controla el cambio entre modo edición y vista
+
   const toggleEdit = () => {
     setIsEditing(!isEditing);
   };
 
-  // Cierra la sesión
+  
   const handleLogout = () => {
     alert('Has cerrado sesión');
-    // Aquí puedes agregar la lógica para cerrar sesión
+    
   };
 
   return (
@@ -96,7 +92,7 @@ function Profile() {
             />
           </label>
           <button onClick={handleAvatarUrlChange}>Aplicar Nueva Foto</button>
-          <button onClick={handleDeleteAvatar}>Eliminar Foto Actual</button> {/* Botón para eliminar la foto actual */}
+          <button onClick={handleDeleteAvatar}>Eliminar Foto Actual</button> 
           <button onClick={toggleEdit}>Guardar Cambios</button>
         </div>
       ) : (
