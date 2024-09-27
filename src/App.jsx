@@ -15,6 +15,10 @@ import MerchCards from './Pages/Merchandising/MerchCards.jsx';
 import Login from "./Pages/login/Login.jsx";
 import Register from "./Pages/register/Register.jsx";
 import Cart from "./Pages/cart/Cart.jsx";
+import Profile from "./Pages/UserProfile/Profile.jsx";
+
+
+
 
 
 function App() {
@@ -23,9 +27,12 @@ function App() {
 
   return (
     <>
-      <NavBar cartItems={cartItems} setCartItems={setCartItems}/>
+      <NavBar cartItems={cartItems} setCartItems={setCartItems} />
 
       <Routes>
+
+      <Route path="/profile" element={<Profile />} /> {/* Ruta del perfil */}
+
         <Route
           path=""
           element={
@@ -96,7 +103,6 @@ function App() {
           }
         />
       </Routes>
-
       <Footer />
     </>
   );

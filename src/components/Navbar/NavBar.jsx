@@ -7,6 +7,8 @@ import logo from "../../assets/images/logo.png";
 import Swal from 'sweetalert'; // Importa SweetAlert
 
 const NavBar = () => {
+
+
   const navigate = useNavigate();
   
   // Estado local para el carrito de compras (esto podría ser reemplazado por un contexto o un estado global)
@@ -14,6 +16,10 @@ const NavBar = () => {
 
   const handleNavigate = (path) => {
     navigate(path);
+  };
+
+  const handleLoginClick = () => {
+    navigate('/profile'); // Redirige a la página del perfil
   };
 
   // Manejar la visualización del carrito
@@ -36,6 +42,7 @@ const NavBar = () => {
       });
     }
   };
+
 
   return (
     <nav className="navbar">
@@ -64,7 +71,7 @@ const NavBar = () => {
           <FontAwesomeIcon icon={faAddressBook} />
           <span>Contáctanos</span>
         </div>
-        <div onClick={() => handleNavigate('/login')} className="icon">
+        <div onClick={() => onClick={handleLoginClick} ('/login')} className="icon">
           <FontAwesomeIcon icon={faUser} />
           <span>Ingresar!</span>
         </div>
