@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone, faEnvelope, faLocationDot, faUser, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
@@ -6,7 +7,7 @@ import "./Contact.css"
 
 const ContactPage = () => {
   return (
-    <div className="container">
+    <div id="container">
       <div className="box-info">
         <h1>CONTÁCTATE CON NOSOTROS</h1>
         <div className="data">
