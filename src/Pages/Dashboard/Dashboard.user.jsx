@@ -1,5 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './DashboardStyle.css';
 
 const apiUrl = 'http://localhost:4000/api/usuarios'; // Cambia esto según sea tu API
@@ -83,59 +84,67 @@ const UserDash = () => {
   };
 
   return (
-    <div className="container">
-      <h1>Usuarios</h1>
+    <div className="container mt-5">
+      <h1 className="text-center mb-4">Usuarios</h1>
 
-      
-      <form onSubmit={editingUser ? handleUpdateUser : handleCreateUser}>
-      <h2>{editingUser ? 'Editar Usuario' : 'Crear Usuario'}</h2>
-        <input
-          type="text"
-          placeholder="Nombre"
-          value={newUser.nombre}
-          onChange={(e) => setNewUser({ ...newUser, nombre: e.target.value })}
-          required
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          value={newUser.email}
-          onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
-          required
-        />
-        <input
-          type="number"
-          placeholder="Edad"
-          value={newUser.edad}
-          onChange={(e) => setNewUser({ ...newUser, edad: e.target.value })}
-          required
-        />
-
-        {/* Selector de roles */}
-        <label htmlFor="rol" className='labelRole'>Rol:</label>
-        <select
-          id="rol"
-          className='selectRol'
-          value={newUser.rol}
-          onChange={(e) => setNewUser({ ...newUser, rol: e.target.value })}
-          required
-        >
-          <option value="" >Seleccionar Rol</option>
-          {rolesDisponibles.map((rol) => (
-            <option key={rol} value={rol}>
-              {rol}
-            </option>
-          ))}
-        </select>
-
-        <button type="submit">{editingUser ? 'Actualizar' : 'Crear'} Usuario</button>
+      <h2 className="mb-4">{editingUser ? 'Editar Usuario' : 'Crear Usuario'}</h2>
+      <form onSubmit={editingUser ? handleUpdateUser : handleCreateUser} className="mb-5">
+        <div className="form-group mb-3">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Nombre"
+            value={newUser.nombre}
+            onChange={(e) => setNewUser({ ...newUser, nombre: e.target.value })}
+            required
+          />
+        </div>
+        <div className="form-group mb-3">
+          <input
+            type="email"
+            className="form-control"
+            placeholder="Email"
+            value={newUser.email}
+            onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
+            required
+          />
+        </div>
+        <div className="form-group mb-3">
+          <input
+            type="number"
+            className="form-control"
+            placeholder="Edad"
+            value={newUser.edad}
+            onChange={(e) => setNewUser({ ...newUser, edad: e.target.value })}
+            required
+          />
+        </div>
+        <div className="form-group mb-3">
+          <label htmlFor="rol" className="form-label">Rol:</label>
+          <select
+            id="rol"
+            className="form-control"
+            value={newUser.rol}
+            onChange={(e) => setNewUser({ ...newUser, rol: e.target.value })}
+            required
+          >
+            <option value="">Seleccionar Rol</option>
+            {rolesDisponibles.map((rol) => (
+              <option key={rol} value={rol}>
+                {rol}
+              </option>
+            ))}
+          </select>
+        </div>
+        <button type="submit" className="btn btn-primary">
+          {editingUser ? 'Actualizar' : 'Crear'} Usuario
+        </button>
       </form>
 
-      <h2>Lista de Usuarios</h2>
-      <table className="table">
+      <h2 className="mb-4">Lista de Usuarios</h2>
+      <table className="table table-striped">
         <thead>
           <tr>
-            {/* <th>ID</th> */}
             <th>Nombre</th>
             <th>Email</th>
             <th>Rol</th>
@@ -145,7 +154,6 @@ const UserDash = () => {
         <tbody>
           {users.map((user) => (
             <tr key={user._id}>
-              {/* <td>{user._id}</td> */}
               <td>{user.userName}</td>
               <td>{user.email}</td>
               <td>{user.roles}</td>

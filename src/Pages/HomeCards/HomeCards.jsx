@@ -1,12 +1,11 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
 import "../../Pages/HomeCards/HomeCards.css";
-import PropTypes from 'prop-types'; // Importa PropTypes para la validación
+import PropTypes from 'prop-types'; 
 const apiEventUrl = 'http://localhost:4000/api/eventos'; // URL de la API de eventos
 
 const EventCard = ({ date, title, description ,imageUrl}) => (
-
-<div className="event-card ">
+  <div className="event-card">
     <img src={imageUrl} alt={title} className="img-fluid event-image" />
     <div className="event-content">
       <h2>{date}</h2>
@@ -16,12 +15,14 @@ const EventCard = ({ date, title, description ,imageUrl}) => (
     </div>
   </div>
 );
+
 EventCard.propTypes = {
   date: PropTypes.string.isRequired,        // date debe ser un string
   title: PropTypes.string.isRequired,       // title debe ser un string
   description: PropTypes.string.isRequired, // description debe ser un string
   imageUrl: PropTypes.string.isRequired,    // imageUrl debe ser un string
 };
+
 const EventsSection = () => {
   const [events, setEvents] = useState([]);
 

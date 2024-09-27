@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
-import './DashboardStyle.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 const apiEventUrl = 'http://localhost:4000/api/eventos'; // API de eventos
 const apiUrlCategories = 'http://localhost:4000/api/categorias'; // API de categorías
 
@@ -137,96 +138,124 @@ const Event = () => {
   };
 
   return (
-    <div className="container">
-      <h1>Eventos</h1>
+    <div className="container mt-5">
+      <h1 className="text-center mb-4">Eventos</h1>
 
-      <h2>{editingEvent ? 'Editar Evento' : 'Crear Evento'}</h2>
-      <form onSubmit={editingEvent ? handleUpdateEvent : handleCreateEvent}>
-        <input
-          type="text"
-          placeholder="Título"
-          value={newEvent.title}
-          onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })}
-          required
-        />
-        <input
-          type="date"
-          value={newEvent.date}
-          onChange={(e) => setNewEvent({ ...newEvent, date: e.target.value })}
-          required
-        />
-        <input
-          type="text"
-          placeholder="Ubicación"
-          value={newEvent.location}
-          onChange={(e) => setNewEvent({ ...newEvent, location: e.target.value })}
-          required
-        />
-        <input
-          type="text"
-          placeholder="URL de imagen"
-          value={newEvent.image}
-          onChange={(e) => setNewEvent({ ...newEvent, image: e.target.value })}
-        />
-        <textarea
-          placeholder="Descripción"
-          value={newEvent.description}
-          onChange={(e) => setNewEvent({ ...newEvent, description: e.target.value })}
-        />
-        <input
-          type="number"
-          placeholder="Boletos"
-          value={newEvent.tickets}
-          onChange={(e) => setNewEvent({ ...newEvent, tickets: Number(e.target.value) })}
-          required
-        />
-
-        {/* Selector de categorías */}
-        <label htmlFor="categoria">Categoría</label>
-        <select
-          id="categoria"
-          className='selectCategoria'
-          value={newEvent.categoria}
-          onChange={(e) => setNewEvent({ ...newEvent, categoria: e.target.value })}
-          required
-        >
-          <option value="">Seleccionar Categoría</option>
-          {categories.map((categoria) => (
-            <option key={categoria._id} value={categoria._id}>
-              {categoria.name} {/* Mostrar el nombre de la categoría */}
-            </option>
-          ))}
-        </select>
-
-        <button type="submit">{editingEvent ? 'Actualizar' : 'Crear'} Evento</button>
+      <h2 className="mb-4">{editingEvent ? 'Editar Evento' : 'Crear Evento'}</h2>
+      <form onSubmit={editingEvent ? handleUpdateEvent : handleCreateEvent} className="mb-5">
+        <div className="form-group mb-3">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Título"
+            value={newEvent.title}
+            onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })}
+            required
+          />
+        </div>
+        <div className="form-group mb-3">
+          <input
+            type="date"
+            className="form-control"
+            value={newEvent.date}
+            onChange={(e) => setNewEvent({ ...newEvent, date: e.target.value })}
+            required
+          />
+        </div>
+        <div className="form-group mb-3">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Ubicación"
+            value={newEvent.location}
+            onChange={(e) => setNewEvent({ ...newEvent, location: e.target.value })}
+            required
+          />
+        </div>
+        <div className="form-group mb-3">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="URL de imagen"
+            value={newEvent.image}
+            onChange={(e) => setNewEvent({ ...newEvent, image: e.target.value })}
+          />
+        </div>
+        <div className="form-group mb-3">
+          <textarea
+            className="form-control"
+            placeholder="Descripción"
+            value={newEvent.description}
+            onChange={(e) => setNewEvent({ ...newEvent, description: e.target.value })}
+          />
+        </div>
+        <div className="form-group mb-3">
+          <input
+            type="number"
+            className="form-control"
+            placeholder="Boletos"
+            value={newEvent.tickets}
+            onChange={(e) => setNewEvent({ ...newEvent, tickets: Number(e.target.value) })}
+            required
+          />
+        </div>
+        <div className="form-group mb-3">
+          <label htmlFor="categoria">Categoría</label>
+          <select
+            id="categoria"
+            className="form-control"
+            value={newEvent.categoria}
+            onChange={(e) => setNewEvent({ ...newEvent, categoria: e.target.value })}
+            required
+          >
+            <option value="">Seleccionar Categoría</option>
+            {categories.map((categoria) => (
+              <option key={categoria._id} value={categoria._id}>
+                {categoria.name} {/* Mostrar el nombre de la categoría */}
+              </option>
+            ))}
+          </select>
+        </div>
+        <button type="submit" className="btn btn-primary">
+          {editingEvent ? 'Actualizar' : 'Crear'} Evento
+        </button>
       </form>
 
-      <h2>Crear Categoría</h2>
-      <form onSubmit={handleCreateCategory}>
-        <input
-          type="text"
-          placeholder="Nombre de la Categoría"
-          value={newCategory.name}
-          onChange={(e) => setNewCategory({ ...newCategory, name: e.target.value })}
-          required
-        />
-        <input
-          type="text"
-          placeholder="Descripción de la Categoría"
-          value={newCategory.description}
-          onChange={(e) => setNewCategory({ ...newCategory, description: e.target.value })}
-        />
-        <input
-          type="text"
-          placeholder="URL de la Imagen"
-          value={newCategory.image}
-          onChange={(e) => setNewCategory({ ...newCategory, image: e.target.value })}
-        />
-        <button type="submit">Crear Categoría</button>
+      <h2 className="mb-4">Crear Categoría</h2>
+      <form onSubmit={handleCreateCategory} className="mb-5">
+        <div className="form-group mb-3">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Nombre de la Categoría"
+            value={newCategory.name}
+            onChange={(e) => setNewCategory({ ...newCategory, name: e.target.value })}
+            required
+          />
+        </div>
+        <div className="form-group mb-3">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Descripción de la Categoría"
+            value={newCategory.description}
+            onChange={(e) => setNewCategory({ ...newCategory, description: e.target.value })}
+          />
+        </div>
+        <div className="form-group mb-3">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="URL de la Imagen"
+            value={newCategory.image}
+            onChange={(e) => setNewCategory({ ...newCategory, image: e.target.value })}
+          />
+        </div>
+        <button type="submit" className="btn btn-primary">Crear Categoría</button>
       </form>
 
-      <h2>Lista de Eventos</h2>
-      <table className="table">
+      <h2 className="mb-4">Lista de Eventos</h2>
+      <table className="table table-striped">
         <thead>
           <tr>
             <th>Título</th>

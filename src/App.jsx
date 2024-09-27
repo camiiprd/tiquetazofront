@@ -10,28 +10,26 @@ import RollingCode from "./Pages/RollingCode/Rolling.jsx";
 import EventsSection from "./Pages/HomeCards/HomeCards.jsx";
 import ContactPage from "./Pages/Contact/Contact.jsx";
 import UserDash from "./Pages/Dashboard/Dashboard.user.jsx";
-import Event from "./Pages/Dashboard/dashboard.event.jsx";
+import Event from "./Pages/Dashboard/Dashboard.event.jsx";
 import MerchCards from './Pages/Merchandising/MerchCards.jsx'; 
 import Login from "./Pages/login/Login.jsx";
 import Register from "./Pages/register/Register.jsx";
 import Cart from "./Pages/cart/Cart.jsx";
 
-
 function App() {
-
-  const [cartItems, setCartItems] = useState([])
+  const [cartItems, setCartItems] = useState([]);
 
   return (
     <>
-      <NavBar cartItems={cartItems} setCartItems={setCartItems}/>
+      <NavBar cartItems={cartItems} setCartItems={setCartItems} />
 
       <Routes>
         <Route
-          path=""
+          path="/"
           element={
             <>
               <Slider />
-              <EventsSection cartItems={cartItems} setCartItems={setCartItems}/>
+              <EventsSection cartItems={cartItems} setCartItems={setCartItems} />
             </>
           }
         />
@@ -61,7 +59,6 @@ function App() {
             </>
           }
         />
-        {/* Nueva ruta para MerchCards */}
         <Route
           path="/merch"
           element={
@@ -70,7 +67,6 @@ function App() {
             </>
           }
         />
-        {/*ruta para login y register */}
         <Route
           path="/login"
           element={
@@ -78,16 +74,14 @@ function App() {
               <Login />
             </>
           }
-          
         />
-         <Route
+        <Route
           path="/register"
           element={
             <>
-              < Register/>
+              <Register />
             </>
           }
-          
         />
         <Route
           path="/cart"
@@ -103,4 +97,3 @@ function App() {
 }
 
 export default App;
-
