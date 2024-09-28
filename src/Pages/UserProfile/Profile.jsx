@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../UserProfile/Profile.css'; 
+import '../UserProfile/Profile.css';
 
 function Profile() {
   const defaultAvatar = 'https://via.placeholder.com/150'; 
@@ -12,7 +12,26 @@ function Profile() {
   });
 
   const [isEditing, setIsEditing] = useState(false); 
-  const [newAvatarUrl, setNewAvatarUrl] = useState(''); 
+  const [newAvatarUrl, setNewAvatarUrl] = useState('');
+  const [errors, setErrors] = useState({});
+
+  const validateFields = () => {
+    let errors = {};
+    if (!user.name) errors.name = 'El nombre es requerido';
+    if (!user.email) {
+      errors.email = 'El correo es requerido';
+    } else if (!/\S+@\S+\.\S+/.test(user.email)) {
+      errors.email = 'El formato del correo es inválido';
+    }
+    if (!user.phone) {
+      errors.phone = 'El teléfono es requerido';
+    } else if (!/^\+?\d{1,15}$/.test(user.phone)) {
+      errors.phone = 'El formato del teléfono es inválido';
+    }
+    if (!user.location) errors.location = 'La ubicación es requerida';
+
+    return errors;
+  };
 
   const handleInputChange = (e) => {
     setUser({
@@ -32,15 +51,22 @@ function Profile() {
     setUser({ ...user, avatar: defaultAvatar });
   };
 
-
   const toggleEdit = () => {
-    setIsEditing(!isEditing);
+    if (isEditing) {
+      const validationErrors = validateFields();
+      if (Object.keys(validationErrors).length === 0) {
+        setIsEditing(false);
+        setErrors({});
+      } else {
+        setErrors(validationErrors);
+      }
+    } else {
+      setIsEditing(true);
+    }
   };
 
-  
   const handleLogout = () => {
     alert('Has cerrado sesión');
-    
   };
 
   return (
@@ -54,34 +80,46 @@ function Profile() {
       {isEditing ? (
         <div className="profile-edit-form">
           <h2>Editar Perfil</h2>
-          <input
-            type="text"
-            name="name"
-            value={user.name}
-            onChange={handleInputChange}
-            placeholder="Nombre"
-          />
-          <input
-            type="email"
-            name="email"
-            value={user.email}
-            onChange={handleInputChange}
-            placeholder="Correo electrónico"
-          />
-          <input
-            type="text"
-            name="location"
-            value={user.location}
-            onChange={handleInputChange}
-            placeholder="Ubicación"
-          />
-          <input
-            type="tel"
-            name="phone"
-            value={user.phone}
-            onChange={handleInputChange}
-            placeholder="Teléfono"
-          />
+          <div>
+            <input
+              type="text"
+              name="name"
+              value={user.name}
+              onChange={handleInputChange}
+              placeholder="Nombre"
+            />
+            {errors.name && <span className="error">{errors.name}</span>}
+          </div>
+          <div>
+            <input
+              type="email"
+              name="email"
+              value={user.email}
+              onChange={handleInputChange}
+              placeholder="Correo electrónico"
+            />
+            {errors.email && <span className="error">{errors.email}</span>}
+          </div>
+          <div>
+            <input
+              type="text"
+              name="location"
+              value={user.location}
+              onChange={handleInputChange}
+              placeholder="Ubicación"
+            />
+            {errors.location && <span className="error">{errors.location}</span>}
+          </div>
+          <div>
+            <input
+              type="tel"
+              name="phone"
+              value={user.phone}
+              onChange={handleInputChange}
+              placeholder="Teléfono"
+            />
+            {errors.phone && <span className="error">{errors.phone}</span>}
+          </div>
           <label>
             Cambiar foto de perfil (URL):
             <input
@@ -92,7 +130,7 @@ function Profile() {
             />
           </label>
           <button onClick={handleAvatarUrlChange}>Aplicar Nueva Foto</button>
-          <button onClick={handleDeleteAvatar}>Eliminar Foto Actual</button> 
+          <button onClick={handleDeleteAvatar}>Eliminar Foto Actual</button>
           <button onClick={toggleEdit}>Guardar Cambios</button>
         </div>
       ) : (
@@ -105,9 +143,8 @@ function Profile() {
 
           <div className="button-container">
             <button onClick={toggleEdit} className="edit-button">Editar Perfil</button>
-             <button onClick={handleLogout} className="logout-button">Cerrar Sesión</button>
-          </div>                
-
+            <button onClick={handleLogout} className="logout-button">Cerrar Sesión</button>
+          </div>
         </div>
       )}
     </div>
