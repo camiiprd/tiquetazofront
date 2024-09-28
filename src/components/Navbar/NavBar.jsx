@@ -4,16 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faShoppingCart, faPhone, faAddressBook, faSearch, faShop } from '@fortawesome/free-solid-svg-icons';
 import logo from "../../assets/images/logo.png";
-import Swal from 'sweetalert'; // Importa SweetAlert
 
 const NavBar = () => {
-
-
   const navigate = useNavigate();
-  
-  // Estado local para el carrito de compras (esto podría ser reemplazado por un contexto o un estado global)
-  const [cartItems, setCartItems] = useState([]); // Debes tener un método para actualizar este estado según la lógica de tu aplicación
 
+  // Redirige a diferentes rutas
   const handleNavigate = (path) => {
     navigate(path);
   };
@@ -22,32 +17,15 @@ const NavBar = () => {
     navigate('/profile'); // Redirige a la página del perfil
   };
 
-  // Manejar la visualización del carrito
+  // Redirige al carrito de compras
   const handleCartClick = () => {
-    if (cartItems.length > 0) {
-      Swal({
-        title: 'Tu Carrito',
-        text: `Tu carrito tiene ${cartItems.length} artículo(s).`,
-        icon: 'info',
-        button: 'Ver carrito',
-      }).then(() => {
-        handleNavigate('/cart'); // Navega a la página del carrito
-      });
-    } else {
-      Swal({
-        title: 'Carrito Vacío',
-        text: 'Tu carrito está vacío.',
-        icon: 'warning',
-        button: 'Entendido',
-      });
-    }
+    handleNavigate('/carrito'); // Redirige a la página del carrito
   };
-
 
   return (
     <nav className="navbar">
       {/* Logo */}
-      <div onClick={() => handleNavigate('')} className="icon navbar-logo">
+      <div onClick={() => handleNavigate('/')} className="icon navbar-logo">
         <img src={logo} alt="Logo" />
       </div>
 
@@ -60,7 +38,7 @@ const NavBar = () => {
       {/* Iconos de login y carrito */}
       <div className="navbar-icons">
         <div onClick={() => handleNavigate('/merch')} className="icon">
-        <FontAwesomeIcon icon={faShop} />
+          <FontAwesomeIcon icon={faShop} />
           <span>Productos</span>
         </div>
         <div onClick={() => handleNavigate('/desarrolladores')} className="icon">
@@ -71,7 +49,7 @@ const NavBar = () => {
           <FontAwesomeIcon icon={faAddressBook} />
           <span>Contáctanos</span>
         </div>
-        <div onClick={() => onClick={handleLoginClick} ('/login')} className="icon">
+        <div onClick={handleLoginClick} className="icon">
           <FontAwesomeIcon icon={faUser} />
           <span>Ingresar!</span>
         </div>
