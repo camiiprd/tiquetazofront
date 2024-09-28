@@ -93,10 +93,6 @@ body {
     flex-direction: column; 
     text-align: center;
   }
-<<<<<<< HEAD
-
-=======
-  
   body {
     margin: 0; 
     padding-top: 0px; 
@@ -108,7 +104,6 @@ body {
     justify-content: center; 
   }
   
->>>>>>> 441785b860d1285c3f3ea8848ed280dfd3d11958
   .navbar-logo img {
     max-width: 100px;
   }
