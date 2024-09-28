@@ -12,7 +12,6 @@
     width: 100%;
     max-width: 1000px;
     margin: 90px auto;
-    margin-top: 200px ;
     border: 2px solid #561C24;
     border-radius: 10px;
     background: #561C24;
@@ -55,7 +54,7 @@
     border-radius: 30px;
     color: #561C24;
     font-size: 35px;
-    padding-top: 7px;
+    padding-top: 0px;
 }
 
 .links > a:hover {
@@ -94,7 +93,7 @@ form {
 
 .input-box > textarea {
     height: 90px;
-    resize: vertical; /* Permite que el textarea se pueda redimensionar verticalmente */
+    resize: vertical; 
 }
 
 .input-box > input::placeholder,
@@ -130,11 +129,12 @@ form > button:hover {
     color: #E8D8C4;
 }
 
+/* Media Queries */
 @media screen and (max-width: 768px) {
-    .container {
-        grid-template-columns: 1fr;
+    #container {
+        grid-template-columns: 1fr; /* Cambia a una sola columna en pantallas pequeñas */
         padding: 20px;
-        margin-top: 200px ;
+        margin-top: 90px; /* Ajusta el margen superior */
     }
 
     .box-info {
@@ -142,7 +142,7 @@ form > button:hover {
     }
 
     .box-info > h1 {
-        font-size: 12px;
+        font-size: 16px; /* Aumenta el tamaño de fuente */
         text-align: left;
     }
 
@@ -151,39 +151,39 @@ form > button:hover {
     }
 
     form > button {
-        width: 320px;
+        width: 100%; /* Asegúrate de que el botón ocupe el 100% */
     }
 
-    .input-box > input
-     {
-        width: 320px;
-    }
-
+    .input-box > input,
     .input-box > textarea {
-        height: 120px; 
-        width: 320px !important ;
+        width: 100%; /* Asegúrate de que los campos de entrada ocupen el 100% */
+    }
+    .data > p {
+        margin-left: 0px;
     }
 }
 
 @media screen and (max-width: 600px) {
-    .container {
+    #container {
         width: 95%;
         margin: 20px auto;
-        margin-top: 200px ;
+        margin-top: 90px; /* Ajusta el margen superior */
     }
 
     .box-info > h1 {
-        font-size: 12px;
+        font-size: 16px; /* Aumenta el tamaño de fuente */
         text-align: left;
     }
 
     .input-box > input,
     .input-box > textarea {
-        width: 320px; 
+        width: 100%; /* Asegúrate de que los campos de entrada ocupen el 100% */
     }
 
     .input-box > textarea {
-        height: 100px; 
-        width: 320px !important ;
+        height: 100px; /* Ajusta la altura de la textarea */
+    }
+    .data > p {
+        margin-left: 0px;
     }
 }
