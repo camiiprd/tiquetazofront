@@ -36,15 +36,15 @@ const CardsAbautUs = () => {
 
     {
       id: 6,
-      title: "LIa Costilla",
+      title: "Lia Costilla",
       text: " Mi objetivo es crear experiencias digitales únicas que conecten a las personas y faciliten sus vidas. Cada línea de código es un paso hacia la excelencia, y estoy comprometida en hacer del mundo digital un lugar más accesible y emocionante.",
       img: "https://res.cloudinary.com/del-men/image/upload/v1727446800/Lia_costilla_xgvce7.jpg",
-      githubLink:""
+      githubLink:"https://github.com/12-9-1"
     },
     {
       id: 7,
-      title: "Valentino",
-      text: " Applications will be available through September 27, 2024. To apply to any of our partners beginning next month, and for any questions you may have about your application, contact the school's admissions office for assistance. Our team thanks you for your understanding and wishes you the best of luck with your future study-abroad plans!",
+      title: "Valentino Lencina",
+      text: "Me apasiona la Programacion y todo lo relacionado a la Informatica ",
       img: "https://res.cloudinary.com/del-men/image/upload/v1727446794/Valentino_xeezgy.jpg",
       githubLink:"https://github.com/ValeLenci"
     },
