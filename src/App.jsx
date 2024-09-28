@@ -25,7 +25,6 @@ function App() {
       <NavBar cartItems={cartItems} setCartItems={setCartItems} />
 
       <Routes>
-        <Route path="/profile" element={<Profile />} /> {/* Ruta del perfil */}
 
         <Route
           path=""
@@ -36,7 +35,15 @@ function App() {
             </>
           }
         />
+
         <Route path='/homecards' element={<EventsSection />} />
+
+        <Route 
+        path="/profile" 
+        element={<Profile />      
+        } 
+        />
+
         <Route
           path="/desarrolladores"
           element={
