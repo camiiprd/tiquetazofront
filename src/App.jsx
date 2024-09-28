@@ -31,8 +31,6 @@ function App() {
 
       <Routes>
 
-      <Route path="/profile" element={<Profile />} /> {/* Ruta del perfil */}
-
         <Route
           path=""
           element={
@@ -41,6 +39,11 @@ function App() {
               <EventsSection cartItems={cartItems} setCartItems={setCartItems}/>
             </>
           }
+        />
+        <Route 
+        path="/profile" 
+        element={<Profile />      
+        } 
         />
         <Route
           path="/desarrolladores"
