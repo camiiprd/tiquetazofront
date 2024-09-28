@@ -71,7 +71,7 @@ const NavBar = () => {
           <FontAwesomeIcon icon={faAddressBook} />
           <span>Contáctanos</span>
         </div>
-        <div onClick={() => onClick={handleLoginClick} ('/login')} className="icon">
+        <div onClick={handleLoginClick} className="icon">
           <FontAwesomeIcon icon={faUser} />
           <span>Ingresar!</span>
         </div>
