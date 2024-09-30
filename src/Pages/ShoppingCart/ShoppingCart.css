@@ -2,16 +2,12 @@
   padding: 40px; 
   background-color: #561C24;
   color: #E8D8C4;
-  border-radius: 12px; 
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-  max-width: 800px; 
+  border-radius: 16px; 
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  max-width: 900px; 
   margin: 20px auto;
-  transition: all 0.3s ease;
-}
-
-.cart-items {
-  max-height: 400px; 
-  overflow-y: auto;
+  transition: all 0.3s ease-in-out;
+  flex-wrap: wrap;
 }
 
 .cart-item {
@@ -19,107 +15,97 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px; 
-  margin: 10px 0;
-  background-color: #f7f7f7;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s;
-  color: #561C24;
+  margin: 15px 0;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s, background-color 0.3s;
 }
 
 .cart-item:hover {
-  background-color: #e8e8e8;
+  transform: scale(1.02);
+  background-color: #f1f1f1;
 }
 
-.trash-icon {
-  cursor: pointer;
-  color: #d9534f; 
-  transition: color 0.3s;
+.cart-item-image {
+  width: 100px; /* Aumenta el tamaño de las imágenes */
+  height: auto;
+  border-radius: 8px;
 }
 
-.trash-icon:hover {
-  color: #c9302c; 
+.cart-item-details h3 {
+  font-size: 1.4em; /* Ajusta el tamaño del título */
+  margin: 0;
+}
+
+.cart-item-details p {
+  font-size: 1.2em;
+  color: #333;
 }
 
 .cart-total {
-  margin-top: 30px; 
-  font-size: 1.5em; 
+  font-size: 1.8em;
   font-weight: bold;
+  margin-top: 40px;
+  color: #fff;
 }
 
-.cart-actions {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-}
-
-.empty-cart-button,
-.finalize-button {
-  padding: 12px 20px;
+.empty-cart-button, .finalize-button {
+  padding: 12px 25px;
   background-color: #E8D8C4;
   color: #561C24;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
-.empty-cart-button:hover,
-.finalize-button:hover {
-  background-color: #c9302c;
-  color: #ffffff;
+.empty-cart-button:hover, .finalize-button:hover {
+  background-color: #561C24;
+  color: #E8D8C4;
 }
-
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+.quantity-controls {
   display: flex;
-  justify-content: center;
   align-items: center;
+  margin-top: 10px;
 }
 
-.modal-content {
-  background-color: white;
-  padding: 30px; 
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  text-align: center;
-  border: 4px solid #561C24; 
+.quantity-controls button {
+  padding: 12px 20px;
+  font-size: 1.2em;
+  background-color: #561C24;
+  color: #E8D8C4;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.modal-buttons {
+
+.quantity-controls span {
+  margin: 0 10px;
+  font-size: 1.2em;
+}
+.cart-actions {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Para que los botones estén a los extremos */
+  align-items: center;
   margin-top: 20px;
 }
 
-.confirm-button,
-.cancel-button {
-  padding: 12px 20px;
+.empty-cart-button, .finalize-button {
+  padding: 12px 25px;
+  background-color: #E8D8C4;
+  color: #561C24;
   border: none;
-  border-radius: 4px;
+  border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s;
+  flex-grow: 1; /* Para que los botones crezcan igualmente */
+  margin: 0 10px; /* Espaciado entre los botones */
 }
 
-.confirm-button {
-  background-color: #d9534f;
-  color: white;
-}
-
-.cancel-button {
-  background-color: #5bc0de;
-  color: white;
-}
-
-.confirm-button:hover {
-  background-color: #c9302c;
-}
-
-.cancel-button:hover {
-  background-color: #31b0d5;
+.empty-cart-button:hover, .finalize-button:hover {
+  background-color: #561C24;
+  color: #E8D8C4;
 }
