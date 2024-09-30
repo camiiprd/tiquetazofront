@@ -88,9 +88,6 @@ Dependencias del Backend
   "jsonwebtoken": "^9.0.2",
   "mongoose": "^8.7.0"
 }
-Dev Dependencies (Backend)
-json
-Copiar código
 {
   "nodemon": "^3.1.4"
 }
