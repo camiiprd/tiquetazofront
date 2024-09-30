@@ -120,7 +120,7 @@ MongoDB: Tener un servidor local.
 Instrucciones de Instalación
 Clona el repositorio:
 
-git clone https://github.com/usuario/tiquetazo.git
+git clone https://github.com/camiiprd/tiquetazofront.git
 
 #Navega a la carpeta del frontend e instala las dependencias:
 
