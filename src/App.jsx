@@ -11,17 +11,19 @@ import EventsSection from "./Pages/HomeCards/HomeCards.jsx";
 import ContactPage from "./Pages/Contact/Contact.jsx";
 import UserDash from "./Pages/Dashboard/Dashboard.user.jsx";
 import Event from "./Pages/Dashboard/dashboard.event.jsx";
+import { ShoppingCardProvider } from "./contexts/ShoppingCardContext";
 import MerchCards from './Pages/Merchandising/MerchCards.jsx'; 
 import Login from "./Pages/login/Login.jsx";
 import Register from "./Pages/register/Register.jsx";
 import ShoppingCart from './Pages/ShoppingCart/ShoppingCart.jsx';
 import Profile from "./Pages/UserProfile/Profile.jsx";
 
+
 function App() {
   const [cartItems, setCartItems] = useState([]);
 
   return (
-    <>
+    <ShoppingCardProvider>
       <NavBar cartItems={cartItems} setCartItems={setCartItems} />
 
       <Routes>
@@ -94,12 +96,11 @@ function App() {
             </>
           }
         />
-        {/* Nueva ruta para el carrito de compras */}
-        <Route path="/carrito" element={<ShoppingCart />} />
+          <Route path="/carrito" element={<ShoppingCart />} />
       </Routes>
       
       <Footer />
-    </>
+    </ShoppingCardProvider>
   );
 }
 

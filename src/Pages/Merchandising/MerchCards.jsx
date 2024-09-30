@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./MerchCards.css";
 import { Card, Button, Container, Row, Col } from "react-bootstrap";
+import { ShoppingCardContext } from "../../contexts/ShoppingCardContext";
 
 const merchItems = [
   {
@@ -76,19 +77,30 @@ const merchItems = [
 ];
 
 const MerchCards = () => {
+  const { addItemToCart } = useContext(ShoppingCardContext);
+
+  const handleAddToCart = (item) => {
+    // Añadir el producto al carrito
+    addItemToCart(item);
+  };
+
   return (
     <Container id="merch-cards-container">
       <Row>
         {merchItems.map((item) => (
-          <Col xs={12} sm={6} md={4} className=" mt-4 mb-4" key={item.id}>
+          <Col xs={12} sm={6} md={4} className="mt-4 mb-4" key={item.id}>
             <Card className="merch-card">
               <Card.Img variant="top" src={item.image} alt={item.title} />
               <Card.Body>
-                <Card.Title >{item.title}</Card.Title>
+                <Card.Title>{item.title}</Card.Title>
                 <Card.Text>{item.description}</Card.Text>
                 <Card.Text className="price">{item.price}</Card.Text>
                 <div className="buy-button">
-                  <Button variant="primary">Comprar</Button>
+                  <Button 
+                    variant="primary" 
+                    onClick={() => handleAddToCart(item)}>
+                    Comprar
+                  </Button>
                 </div>
               </Card.Body>
             </Card>

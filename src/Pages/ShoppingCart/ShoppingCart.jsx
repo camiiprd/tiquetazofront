@@ -1,20 +1,25 @@
-import React, { useState } from 'react'; 
+import React, { useContext, useState } from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import './ShoppingCart.css';
+import { ShoppingCardContext } from '../../contexts/ShoppingCardContext';
 
 const ShoppingCart = () => {
-  const [cartItems, setCartItems] = useState([
-    { id: 1, name: 'Concierto A', price: 100 },
-    { id: 2, name: 'Concierto B', price: 150 },
-  ]);
-
+  const { cartItems, removeFromCart, clearCart, updateQuantity } = useContext(ShoppingCardContext);
   const [showModal, setShowModal] = useState(false);
   const [itemToRemove, setItemToRemove] = useState(null);
-  const [showEmailModal, setShowEmailModal] = useState(false);
+  const userId = 'YOUR_USER_ID';
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
-  const total = cartItems.reduce((acc, item) => acc + item.price, 0);
+  const total = cartItems.reduce((acc, item) => {
+    try {
+      return acc + parseFloat(item.price.slice(1)) * item.quantity;
+    } catch (error) {
+      console.error("Error al calcular el total:", error);
+      return acc;
+    }
+  }, 0);
 
   const handleRemoveClick = (itemId) => {
     setShowModal(true);
@@ -22,78 +27,95 @@ const ShoppingCart = () => {
   };
 
   const confirmRemove = () => {
-    setCartItems(cartItems.filter(item => item.id !== itemToRemove));
+    removeFromCart(itemToRemove);
     setShowModal(false);
     setItemToRemove(null);
   };
 
-  const emptyCart = () => {
-    setCartItems([]);
+  const handleIncreaseQuantity = (itemId) => {
+    updateQuantity(itemId, 1); // Incrementar la cantidad
   };
 
-  const finalizePurchase = () => {
-    console.log("Compra finalizada!");
-    setShowEmailModal(true);
+  const handleDecreaseQuantity = (itemId) => {
+    updateQuantity(itemId, -1); // Decrementar la cantidad
   };
 
-  const sendInvoiceEmail = () => {
-    console.log("Enviando factura con QR por email...");
-    setShowEmailModal(false);
+  const finalizePurchase = async () => {
+    try {
+      const response = await fetch('http://localhost:4000/api/purchases', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ items: cartItems, total, userId }),
+      });
+  
+      if (response.ok) {
+        console.log("Compra exitosa");
+        clearCart();
+        setShowSuccessModal(true);
+      } else {
+        console.error("Error finalizando la compra:", await response.json());
+      }
+    } catch (error) {
+      console.error("Error finalizando la compra:", error);
+    }
   };
-
+  
   return (
     <div className="shopping-cart">
-      <h2>Carrito de Compras</h2>
-      <div className="cart-items">
-        {cartItems.length === 0 ? (
-          <p>Tu carrito está vacío.</p>
-        ) : (
-          cartItems.map(item => (
+      <h1>Carrito de Compras</h1>
+      {cartItems.length === 0 ? (
+        <p>No hay productos en el carrito.</p>
+      ) : (
+        <div className="cart-items">
+          {cartItems.map((item) => (
             <div key={item.id} className="cart-item">
-              <span>{item.name} - ${item.price}</span>
-              <FaTrashAlt className="trash-icon" onClick={() => handleRemoveClick(item.id)} />
+              <img src={item.image} alt={item.title} className="cart-item-image" />
+              <div className="cart-item-details">
+                <h3>{item.title} (Cantidad: {item.quantity})</h3>
+                <p>{item.price}</p>
+                <div className="quantity-controls">
+                  <button onClick={() => handleDecreaseQuantity(item.id)}>-</button>
+                  <span>{item.quantity}</span>
+                  <button onClick={() => handleIncreaseQuantity(item.id)}>+</button>
+                </div>
+                <button onClick={() => handleRemoveClick(item.id)}>
+                  <FaTrashAlt /> Eliminar
+                </button>
+              </div>
             </div>
-          ))
-        )}
-      </div>
+          ))}
+        </div>
+      )}
       <div className="cart-total">
-        <h3>Total: ${total}</h3>
+        <h3>Total: ${total.toFixed(2)}</h3>
+        <div className="cart-actions">
+          <Button variant="danger" onClick={clearCart}>Limpiar Carrito</Button>
+          <Button variant="success" onClick={finalizePurchase}>Finalizar Compra</Button>
+        </div>
       </div>
 
-      <div className="cart-actions">
-        <button className="empty-cart-button" onClick={emptyCart}>Vaciar Carrito</button>
-        <button className="finalize-button" onClick={finalizePurchase}>Finalizar Compra</button>
-      </div>
-
-      {/* Modal de confirmación de eliminación */}
+      {/* Modal de confirmación para eliminar un ítem */}
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Confirmar Eliminación</Modal.Title>
         </Modal.Header>
         <Modal.Body>¿Estás seguro de que deseas eliminar este ítem?</Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowModal(false)}>
-            Cancelar
-          </Button>
-          <Button variant="danger" onClick={confirmRemove}>
-            Eliminar
-          </Button>
+          <Button variant="secondary" onClick={() => setShowModal(false)}>Cancelar</Button>
+          <Button variant="danger" onClick={confirmRemove}>Eliminar</Button>
         </Modal.Footer>
       </Modal>
 
-      {/* Modal de envío de factura */}
-      <Modal show={showEmailModal} onHide={() => setShowEmailModal(false)}>
+      {/* Modal de compra exitosa */}
+      <Modal show={showSuccessModal} onHide={() => setShowSuccessModal(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>Enviar Factura</Modal.Title>
+          <Modal.Title>Compra Exitosa</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Factura generada. ¿Deseas enviar la factura con un código QR por email?</Modal.Body>
+        <Modal.Body>Tu compra ha sido completada con éxito. ¡Gracias por tu compra!</Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowEmailModal(false)}>
-            Cancelar
-          </Button>
-          <Button variant="primary" onClick={sendInvoiceEmail}>
-            Enviar Factura
-          </Button>
+          <Button variant="primary" onClick={() => setShowSuccessModal(false)}>Cerrar</Button>
         </Modal.Footer>
       </Modal>
     </div>
