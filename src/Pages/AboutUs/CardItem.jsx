@@ -68,3 +68,4 @@ const CardItem = ({ title, text, img, githubLink }) => {
 };
 
 export default CardItem;
+
