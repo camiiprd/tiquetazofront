@@ -1,4 +1,4 @@
-import CardList from "./CardList";
+/*import CardList from "./CardList";
 
 const CardsAbautUs = () => {
   const cardInfo = [
@@ -67,5 +67,36 @@ const CardsAbautUs = () => {
     </>
   );
 };
-export default CardsAbautUs;
+export default CardsAbautUs;*/
+
+import React, { useEffect, useState } from 'react';
+import CardList from './CardList';
+
+const CardsAboutUs = () => {
+  const [cardInfo, setCardInfo] = useState([]);
+
+  useEffect(() => {
+    // Hacer una solicitud a la API para obtener los datos de los desarrolladores
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:4000/api/AboutUs');
+        const data = await response.json();
+        setCardInfo(data);
+      } catch (error) {
+        console.error('Error al obtener los datos:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return (
+    <div>
+      <CardList cards={cardInfo} />
+    </div>
+  );
+};
+
+export default CardsAboutUs;
+
 
