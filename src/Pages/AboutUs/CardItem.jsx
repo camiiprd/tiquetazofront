@@ -82,7 +82,11 @@ const CardItem = ({ title, text, img, githubLink }) => {
   };
 
   return (
-    <div className="card-item d-flex align-items-stretch" style={{ padding: "20px" }}>
+    <div className="card-item d-flex align-items-stretch" style={{ 
+      backgroundImage: `url('https://img.freepik.com/foto-gratis/experiencia-programacion-persona-que-trabaja-codigos-computadora_23-2150010125.jpg?t=st=1725975691~exp=1725979291~hmac=5bb9d0e3d958822eda5e55387da8ae629b5ff633b92c297a20a922375800634f&w=996')`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      padding: "20px" }}>
       <Card style={{ backgroundColor: "transparent", border: "none", minHeight: "350px" }} className="w-100">
         <div className="card-img-container">
           <Card.Img variant="top" src={img} className="img-fluid" style={{ height: "350px", objectFit: "cover" }} />
