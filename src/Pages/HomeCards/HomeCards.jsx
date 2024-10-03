@@ -1,28 +1,37 @@
-// eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
 import "../../Pages/HomeCards/HomeCards.css";
-import PropTypes from 'prop-types'; // Importa PropTypes para la validación
+import PropTypes from 'prop-types';
+
 const apiEventUrl = 'http://localhost:4000/api/eventos'; // URL de la API de eventos
 
-const EventCard = ({ date, title, description ,imageUrl}) => (
-
-<div className="event-card ">
-    <img src={imageUrl} alt={title} className="img-fluid event-image" />
-    <div className="event-content">
-      <h2>{date}</h2>
-      <h3>{title}</h3>
-      <p>{description}</p>
-      <button className="event-button">COMPRAR</button>
+const EventCard = ({ date, title, description, imageUrl, price, addToCart }) => {
+  return (
+    <div className="event-card">
+      <img src={imageUrl} alt={title} className="img-fluid event-image" />
+      <div className="event-content">
+        <h2>{date}</h2>
+        <h3>{title}</h3>
+        <p>{description}</p>
+        <p>Precio: ${price}</p>
+        {/* El botón "COMPRAR" llama a addToCart cuando se presiona */}
+        <button className="event-button" onClick={() => addToCart({ _id: Math.random(), title, price })}>
+          COMPRAR
+        </button>
+      </div>
     </div>
-  </div>
-);
-EventCard.propTypes = {
-  date: PropTypes.string.isRequired,        // date debe ser un string
-  title: PropTypes.string.isRequired,       // title debe ser un string
-  description: PropTypes.string.isRequired, // description debe ser un string
-  imageUrl: PropTypes.string.isRequired,    // imageUrl debe ser un string
+  );
 };
-const EventsSection = () => {
+
+EventCard.propTypes = {
+  date: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  addToCart: PropTypes.func.isRequired,  // Asegurarse de que addToCart es una función pasada como prop
+};
+
+const EventsSection = ({ addToCart }) => {
   const [events, setEvents] = useState([]);
 
   // Obtener los eventos de la API
@@ -46,11 +55,13 @@ const EventsSection = () => {
       <div className="events-grid">
         {events.map(event => (
           <EventCard
-            key={event._id}  // Cambié de 'id' a '_id' para ajustarlo a MongoDB
-            date={new Date(event.date).toLocaleDateString()} // Formatea la fecha
+            key={event._id}
+            date={new Date(event.date).toLocaleDateString()}
             title={event.title}
             description={event.description}
-            imageUrl={event.image}  // Asegúrate de que la URL de la imagen esté correctamente almacenada
+            imageUrl={event.image}
+            price={event.price}
+            addToCart={addToCart}  // Pasamos la función addToCart a EventCard
           />
         ))}
       </div>
