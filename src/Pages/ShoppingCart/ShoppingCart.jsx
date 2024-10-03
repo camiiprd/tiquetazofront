@@ -4,12 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import './ShoppingCart.css';
 
-const ShoppingCart = () => {
-  const [cartItems, setCartItems] = useState([
-    { id: 1, name: 'Concierto A', price: 100 },
-    { id: 2, name: 'Concierto B', price: 150 },
-  ]);
-
+const ShoppingCart = ({ cartItems, setCartItems }) => {
   const [showModal, setShowModal] = useState(false);
   const [itemToRemove, setItemToRemove] = useState(null);
   const [showEmailModal, setShowEmailModal] = useState(false);
@@ -25,10 +20,6 @@ const ShoppingCart = () => {
     setCartItems(cartItems.filter(item => item.id !== itemToRemove));
     setShowModal(false);
     setItemToRemove(null);
-  };
-
-  const emptyCart = () => {
-    setCartItems([]);
   };
 
   const finalizePurchase = () => {
@@ -61,7 +52,7 @@ const ShoppingCart = () => {
       </div>
 
       <div className="cart-actions">
-        <button className="empty-cart-button" onClick={emptyCart}>Vaciar Carrito</button>
+        <button className="empty-cart-button" onClick={() => setCartItems([])}>Vaciar Carrito</button>
         <button className="finalize-button" onClick={finalizePurchase}>Finalizar Compra</button>
       </div>
 

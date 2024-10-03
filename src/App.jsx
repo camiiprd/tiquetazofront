@@ -20,6 +20,16 @@ import Profile from "./Pages/UserProfile/Profile.jsx";
 function App() {
   const [cartItems, setCartItems] = useState([]);
 
+  // Función para agregar productos al carrito
+  const addToCart = (event) => {
+    const existingItem = cartItems.find(item => item.name === event.title);
+    if (existingItem) {
+      alert("Este evento ya está en el carrito");
+    } else {
+      setCartItems([...cartItems, { id: event._id, name: event.title, price: event.price }]);
+    }
+  };
+
   return (
     <>
       <NavBar cartItems={cartItems} setCartItems={setCartItems} />
@@ -31,18 +41,18 @@ function App() {
           element={
             <>
               <Slider />
-              <EventsSection cartItems={cartItems} setCartItems={setCartItems}/>
+              {/* Pasamos addToCart, cartItems, y setCartItems a EventsSection */}
+              <EventsSection addToCart={addToCart} cartItems={cartItems} setCartItems={setCartItems} />
             </>
           }
         />
 
-        <Route path='/homecards' element={<EventsSection />} />
-
         <Route 
-        path="/profile" 
-        element={<Profile />      
-        } 
+          path='/homecards' 
+          element={<EventsSection addToCart={addToCart} cartItems={cartItems} setCartItems={setCartItems} />} 
         />
+
+        <Route path="/profile" element={<Profile />} />
 
         <Route
           path="/desarrolladores"
@@ -53,14 +63,7 @@ function App() {
             </>
           }
         />
-        <Route
-          path="/contact"
-          element={
-            <>
-              <ContactPage />
-            </>
-          }
-        />
+        <Route path="/contact" element={<ContactPage />} />
         <Route
           path="/dash"
           element={
@@ -70,32 +73,15 @@ function App() {
             </>
           }
         />
-        <Route
-          path="/merch"
-          element={
-            <>
-              <MerchCards />
-            </>
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <>
-              <Login />
-            </>
-          }
-        />
-        <Route
-          path="/register"
-          element={
-            <>
-              <Register />
-            </>
-          }
-        />
+        <Route path="/merch" element={<MerchCards />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+
         {/* Nueva ruta para el carrito de compras */}
-        <Route path="/carrito" element={<ShoppingCart />} />
+        <Route 
+          path="/carrito" 
+          element={<ShoppingCart cartItems={cartItems} setCartItems={setCartItems} />} 
+        />
       </Routes>
       
       <Footer />

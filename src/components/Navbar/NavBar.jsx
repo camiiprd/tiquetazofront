@@ -28,13 +28,7 @@ const NavBar = () => {
       <div onClick={() => handleNavigate('/')} className="icon navbar-logo">
         <img src={logo} alt="Logo" />
       </div>
-
-      {/* Barra de búsqueda */}
-      <div className="navbar-search">
-        <input type="text" placeholder="Buscar eventos..." />
-        <FontAwesomeIcon icon={faSearch} className="search-icon" />
-      </div>
-
+      
       {/* Iconos de login y carrito */}
       <div className="navbar-icons">
         <div onClick={() => handleNavigate('/merch')} className="icon">
