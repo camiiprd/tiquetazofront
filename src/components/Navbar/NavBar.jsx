@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import '../NavBar/NavBar.css';
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faShoppingCart, faPhone, faAddressBook, faSearch, faShop } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faShoppingCart, faPhone, faAddressBook, faSearch, faShop ,faLaptopCode} from '@fortawesome/free-solid-svg-icons';
 import logo from "../../assets/images/logo.png";
 import { ShoppingCardContext } from "../../contexts/ShoppingCardContext";
 
@@ -34,7 +34,7 @@ const NavBar = () => {
           <span>Productos</span>
         </div>
         <div onClick={() => navigate('/desarrolladores')} className="icon">
-          <FontAwesomeIcon icon={faPhone} />
+          <FontAwesomeIcon icon={faLaptopCode} />
           <span>Sobre nosotros</span>
         </div>
         <div onClick={() => navigate('/contact')} className="icon">

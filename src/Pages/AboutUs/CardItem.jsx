@@ -52,7 +52,6 @@ const CardItem = ({ title, text, img, githubLink }) => {
               {isExpanded ? "Ver menos" : "Ver más"}
             </Button>
           )}
-
           <Button
             className="text-white efect-buton bg-transparent"
             variant="light"
@@ -68,4 +67,3 @@ const CardItem = ({ title, text, img, githubLink }) => {
 };
 
 export default CardItem;
-
