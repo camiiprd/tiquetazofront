@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react'; 
+import { useNavigate } from 'react-router-dom'; // Importa useNavigate
 import '../UserProfile/Profile.css';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 function Profile() {
+  const navigate = useNavigate(); // Inicializa useNavigate
   const defaultAvatar = 'https://via.placeholder.com/150'; 
 
   // Cargar los datos del usuario desde localStorage o establecer los valores por defecto
@@ -23,6 +27,7 @@ function Profile() {
   const [isEditing, setIsEditing] = useState(false); 
   const [newAvatarUrl, setNewAvatarUrl] = useState('');
   const [errors, setErrors] = useState({});
+  const [showModal, setShowModal] = useState(false); // Estado para el modal
 
   // Guardar los datos en localStorage cada vez que se actualiza el usuario
   useEffect(() => {
@@ -96,7 +101,14 @@ function Profile() {
   };
 
   const handleLogout = () => {
-    alert('Has cerrado sesión');
+    setShowModal(true); // Mostrar el modal
+  };
+
+ 
+  const confirmLogout = () => {
+    setShowModal(false); 
+    localStorage.removeItem('user'); 
+    navigate('/login'); // Utiliza navigate en lugar de window.location.href
   };
 
   return (
@@ -220,6 +232,17 @@ function Profile() {
           </div>
         </div>
       )}
+
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Confirmar Cierre de Sesión</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>¿Estás seguro que deseas cerrar sesión?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowModal(false)}>Cancelar</Button>
+          <Button variant="primary" onClick={confirmLogout}>Cerrar Sesión</Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }
