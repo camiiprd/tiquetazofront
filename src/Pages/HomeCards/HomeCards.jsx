@@ -1,27 +1,51 @@
-// eslint-disable-next-line no-unused-vars
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import "../../Pages/HomeCards/HomeCards.css";
-import PropTypes from 'prop-types'; // Importa PropTypes para la validación
+import PropTypes from 'prop-types';
+import Swal from 'sweetalert2';  // Importamos SweetAlert2
+import { ShoppingCardContext } from '../../contexts/ShoppingCardContext'; // Importar el contexto
+
 const apiEventUrl = 'http://localhost:4000/api/eventos'; // URL de la API de eventos
 
-const EventCard = ({ date, title, description ,imageUrl}) => (
+const EventCard = ({ date, title, description, imageUrl }) => {
+  const { addItemToCart } = useContext(ShoppingCardContext);  // Usar el contexto para agregar al carrito
+  const price = 35000;  // Precio fijo para los eventos
 
-<div className="event-card ">
-    <img src={imageUrl} alt={title} className="img-fluid event-image" />
-    <div className="event-content">
-      <h2>{date}</h2>
-      <h3>{title}</h3>
-      <p>{description}</p>
-      <button className="event-button">COMPRAR</button>
+  const handleAddToCart = () => {
+    // Agregar el evento con el precio fijo al carrito
+    addItemToCart({ id: Math.random(), title, price, type: 'event' });
+
+    // Mostrar SweetAlert2 para indicar éxito
+    Swal.fire({
+      title: 'Evento agregado',
+      text: 'El evento ha sido agregado al carrito con éxito!',
+      icon: 'success',
+      confirmButtonText: 'Aceptar'
+    });
+  };
+
+  return (
+    <div className="event-card">
+      <img src={imageUrl} alt={title} className="img-fluid event-image" />
+      <div className="event-content">
+        <h2>{date}</h2>
+        <h3>{title}</h3>
+        <p>{description}</p>
+        <p>Precio: ${price}</p> {/* Mostrar el precio correctamente */}
+        <button className="event-button" onClick={handleAddToCart}>
+          COMPRAR
+        </button>
+      </div>
     </div>
-  </div>
-);
-EventCard.propTypes = {
-  date: PropTypes.string.isRequired,        // date debe ser un string
-  title: PropTypes.string.isRequired,       // title debe ser un string
-  description: PropTypes.string.isRequired, // description debe ser un string
-  imageUrl: PropTypes.string.isRequired,    // imageUrl debe ser un string
+  );
 };
+
+EventCard.propTypes = {
+  date: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string.isRequired
+};
+
 const EventsSection = () => {
   const [events, setEvents] = useState([]);
 
@@ -46,11 +70,11 @@ const EventsSection = () => {
       <div className="events-grid">
         {events.map(event => (
           <EventCard
-            key={event._id}  // Cambié de 'id' a '_id' para ajustarlo a MongoDB
-            date={new Date(event.date).toLocaleDateString()} // Formatea la fecha
+            key={event._id}
+            date={new Date(event.date).toLocaleDateString()}
             title={event.title}
             description={event.description}
-            imageUrl={event.image}  // Asegúrate de que la URL de la imagen esté correctamente almacenada
+            imageUrl={event.image}
           />
         ))}
       </div>

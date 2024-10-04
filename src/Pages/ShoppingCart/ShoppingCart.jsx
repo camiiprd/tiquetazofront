@@ -6,20 +6,12 @@ import './ShoppingCart.css';
 import { ShoppingCardContext } from '../../contexts/ShoppingCardContext';
 
 const ShoppingCart = () => {
-  const { cartItems, removeFromCart, clearCart, updateQuantity } = useContext(ShoppingCardContext);
+  const { cartItems, removeFromCart, clearCart, updateQuantity, getTotal } = useContext(ShoppingCardContext);
   const [showModal, setShowModal] = useState(false);
   const [itemToRemove, setItemToRemove] = useState(null);
-  const userId = 'YOUR_USER_ID';
   const [showSuccessModal, setShowSuccessModal] = useState(false);
 
-  const total = cartItems.reduce((acc, item) => {
-    try {
-      return acc + parseFloat(item.price.slice(1)) * item.quantity;
-    } catch (error) {
-      console.error("Error al calcular el total:", error);
-      return acc;
-    }
-  }, 0);
+  const total = getTotal(); // Utilizar la función getTotal desde el contexto
 
   const handleRemoveClick = (itemId) => {
     setShowModal(true);
@@ -41,27 +33,11 @@ const ShoppingCart = () => {
   };
 
   const finalizePurchase = async () => {
-    try {
-      const response = await fetch('http://localhost:4000/api/purchases', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ items: cartItems, total, userId }),
-      });
-  
-      if (response.ok) {
-        console.log("Compra exitosa");
-        clearCart();
-        setShowSuccessModal(true);
-      } else {
-        console.error("Error finalizando la compra:", await response.json());
-      }
-    } catch (error) {
-      console.error("Error finalizando la compra:", error);
-    }
+    console.log("Compra finalizada!");
+    clearCart();
+    setShowSuccessModal(true);
   };
-  
+
   return (
     <div className="shopping-cart">
       <h1>Carrito de Compras</h1>
@@ -71,25 +47,23 @@ const ShoppingCart = () => {
         <div className="cart-items">
           {cartItems.map((item) => (
             <div key={item.id} className="cart-item">
-              <img src={item.image} alt={item.title} className="cart-item-image" />
-              <div className="cart-item-details">
-                <h3>{item.title} (Cantidad: {item.quantity})</h3>
-                <p>{item.price}</p>
-                <div className="quantity-controls">
-                  <button onClick={() => handleDecreaseQuantity(item.id)}>-</button>
-                  <span>{item.quantity}</span>
-                  <button onClick={() => handleIncreaseQuantity(item.id)}>+</button>
-                </div>
-                <button onClick={() => handleRemoveClick(item.id)}>
-                  <FaTrashAlt /> Eliminar
-                </button>
+              <h3>{item.title} {item.type === 'event' ? '(Evento)' : '(Producto de Merchandising)'}</h3>
+              <p>Precio: ${item.price}</p>
+              <p>Cantidad: {item.quantity}</p>
+              <div className="quantity-controls">
+                <button onClick={() => handleDecreaseQuantity(item.id)}>-</button>
+                <span>{item.quantity}</span>
+                <button onClick={() => handleIncreaseQuantity(item.id)}>+</button>
               </div>
+              <button onClick={() => handleRemoveClick(item.id)}>
+                <FaTrashAlt /> Eliminar
+              </button>
             </div>
           ))}
         </div>
       )}
       <div className="cart-total">
-        <h3>Total: ${total.toFixed(2)}</h3>
+        <h3>Total: ${total.toFixed(2)}</h3> {/* Mostrar el total exacto con dos decimales */}
         <div className="cart-actions">
           <Button variant="danger" onClick={clearCart}>Limpiar Carrito</Button>
           <Button variant="success" onClick={finalizePurchase}>Finalizar Compra</Button>

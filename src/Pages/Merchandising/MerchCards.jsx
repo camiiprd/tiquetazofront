@@ -2,13 +2,14 @@ import React, { useContext } from "react";
 import "./MerchCards.css";
 import { Card, Button, Container, Row, Col } from "react-bootstrap";
 import { ShoppingCardContext } from "../../contexts/ShoppingCardContext";
+import Swal from 'sweetalert2';  // Importamos SweetAlert2
 
 const merchItems = [
   {
     id: 1,
     title: "Camiseta",
     description: "Camiseta de algodón con logo.",
-    price: "$20",
+    price: "20000",
     image:
       "https://acdn.mitiendanube.com/stores/402/355/products/ciro-281-95e19d81d66b40e3ac16733798408667-640-0.jpeg",
   },
@@ -16,14 +17,14 @@ const merchItems = [
     id: 2,
     title: "Gorra",
     description: "Gorra ajustable con logo bordado.",
-    price: "$15",
+    price: "1500",
     image: "https://http2.mlstatic.com/D_952208-MLA78086262299_072024-O.jpg",
   },
   {
     id: 3,
     title: "Taza",
     description: "Taza de cerámica con diseño.",
-    price: "$10",
+    price: "1800",
     image:
       "https://http2.mlstatic.com/D_Q_NP_2X_858454-MLA78085401617_072024-T.webp",
   },
@@ -31,7 +32,7 @@ const merchItems = [
     id: 4,
     title: "Camiseta",
     description: "Camiseta de algodón con logo.",
-    price: "$20",
+    price: "22000",
     image:
       "https://static.wixstatic.com/media/5854b3_94468b2cc18e40ceba7282c448634bb7~mv2.jpg/v1/fit/w_500,h_500,q_90/file.jpg",
   },
@@ -39,7 +40,7 @@ const merchItems = [
     id: 5,
     title: "Gorra",
     description: "Gorra ajustable con logo bordado.",
-    price: "$15",
+    price: "1000",
     image:
       "https://acdn.mitiendanube.com/stores/422/826/products/g11-99fb8cd00844377a8d17099133985007-640-0.jpg",
   },
@@ -47,7 +48,7 @@ const merchItems = [
     id: 6,
     title: "Taza",
     description: "Taza de cerámica con diseño.",
-    price: "$10",
+    price: "1300",
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3ss_-hx74yJYxXGAS4XDHHXheDwtiSFpGqw&s",
   },
@@ -55,7 +56,7 @@ const merchItems = [
     id: 7,
     title: "Camiseta",
     description: "Camiseta de algodón con logo.",
-    price: "$20",
+    price: "21050",
     image:
       "https://acdn.mitiendanube.com/stores/402/355/products/la-renga-8921-41850e47e51280f60116893877339610-640-0.jpg",
   },
@@ -63,7 +64,7 @@ const merchItems = [
     id: 8,
     title: "Gorra",
     description: "Gorra ajustable con logo bordado.",
-    price: "$15",
+    price: "1550",
     image:
       "https://acdn.mitiendanube.com/stores/405/662/products/gorra-la-renga1-5706612e61df8a1d1716497636164436-640-0.jpg",
   },
@@ -71,7 +72,7 @@ const merchItems = [
     id: 9,
     title: "Taza",
     description: "Taza de cerámica con diseño.",
-    price: "$10",
+    price: "1000",
     image: "https://http2.mlstatic.com/D_659825-MLA77007715016_062024-O.jpg",
   },
 ];
@@ -82,6 +83,14 @@ const MerchCards = () => {
   const handleAddToCart = (item) => {
     // Añadir el producto al carrito
     addItemToCart(item);
+
+    // Mostrar SweetAlert para indicar éxito
+    Swal.fire({
+      title: 'Producto agregado',
+      text: 'El producto ha sido agregado al carrito con éxito!',
+      icon: 'success',
+      confirmButtonText: 'Aceptar'
+    });
   };
 
   return (

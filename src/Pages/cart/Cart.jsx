@@ -16,6 +16,22 @@ const Cart = ({ cartItems, setCartItems }) => {
     );
     setCartItems(updatedItems);
   };
+  const handleAddToCart = (newItem) => {
+    // Verifica si el producto ya está en el carrito
+    const existingItem = cartItems.find(item => item.id === newItem.id);
+    if (existingItem) {
+      handleIncrease(newItem.id); // Si ya está agregado, aumenta la cantidad
+    } else {
+      setCartItems(prevItems => [...prevItems, { ...newItem, quantity: 1 }]);
+    }
+    // Muestra alerta del producto agregado
+    Swal({
+      title: '¡Producto agregado!',
+      text: 'Producto agregado correctamente al carrito.',
+      icon: 'success',
+      confirmButtonText: 'Aceptar'
+    });
+  };
 
   const handleEmptyCart = () => {
     Swal({

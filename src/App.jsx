@@ -1,7 +1,7 @@
 import "./App.css"; 
 import NavBar from "./components/Navbar/NavBar.jsx";
 import Slider from './components/Slider/Slider.jsx';
-import React, { useState } from "react";
+import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer/Footer.jsx";
@@ -18,33 +18,28 @@ import Register from "./Pages/register/Register.jsx";
 import ShoppingCart from './Pages/ShoppingCart/ShoppingCart.jsx';
 import Profile from "./Pages/UserProfile/Profile.jsx";
 
-
 function App() {
-  const [cartItems, setCartItems] = useState([]);
-
   return (
     <ShoppingCardProvider>
-      <NavBar cartItems={cartItems} setCartItems={setCartItems} />
+      <NavBar />  {/* No necesitamos pasar cartItems y setCartItems aquí, ya que se manejarán por el contexto */}
 
       <Routes>
-
         <Route
           path=""
           element={
             <>
               <Slider />
-              <EventsSection cartItems={cartItems} setCartItems={setCartItems}/>
+              <EventsSection />  {/* Ya no necesitamos pasar addToCart como prop */}
             </>
           }
         />
 
-        <Route path='/homecards' element={<EventsSection />} />
-
         <Route 
-        path="/profile" 
-        element={<Profile />      
-        } 
+          path='/homecards' 
+          element={<EventsSection />} 
         />
+
+        <Route path="/profile" element={<Profile />} />
 
         <Route
           path="/desarrolladores"
@@ -55,14 +50,7 @@ function App() {
             </>
           }
         />
-        <Route
-          path="/contact"
-          element={
-            <>
-              <ContactPage />
-            </>
-          }
-        />
+        <Route path="/contact" element={<ContactPage />} />
         <Route
           path="/dash"
           element={
@@ -80,23 +68,9 @@ function App() {
             </>
           }
         />
-        <Route
-          path="/login"
-          element={
-            <>
-              <Login />
-            </>
-          }
-        />
-        <Route
-          path="/register"
-          element={
-            <>
-              <Register />
-            </>
-          }
-        />
-          <Route path="/carrito" element={<ShoppingCart />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/carrito" element={<ShoppingCart />} />
       </Routes>
       
       <Footer />
