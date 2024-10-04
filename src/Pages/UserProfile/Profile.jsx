@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'; 
 import '../UserProfile/Profile.css';
 
 function Profile() {
@@ -6,11 +6,17 @@ function Profile() {
 
   // Cargar los datos del usuario desde localStorage o establecer los valores por defecto
   const initialUser = JSON.parse(localStorage.getItem('user')) || {
-    name: 'Juan Perez',
+    userName: 'Juan Perez',
     email: 'jperez@gmail.com',
-    location: 'Tucuman, Argentina',
     phone: '',
-    avatar: defaultAvatar,
+    address: {
+      street: 'Calle Falsa',
+      number: 123,
+      city: 'Tucumán',
+      state: 'Tucumán',
+      zipCode: '4000',
+    },
+    profilePicture: defaultAvatar,
   };
 
   const [user, setUser] = useState(initialUser);
@@ -25,7 +31,7 @@ function Profile() {
 
   const validateFields = () => {
     let errors = {};
-    if (!user.name) errors.name = 'El nombre es requerido';
+    if (!user.userName) errors.userName = 'El nombre de usuario es requerido';
     if (!user.email) {
       errors.email = 'El correo es requerido';
     } else if (!/\S+@\S+\.\S+/.test(user.email)) {
@@ -35,27 +41,43 @@ function Profile() {
     if (user.phone && !/^\+?\d{1,15}$/.test(user.phone)) {
       errors.phone = 'El formato del teléfono es inválido';
     }
-    if (!user.location) errors.location = 'La ubicación es requerida';
+    if (!user.address.street || !user.address.number || !user.address.city || !user.address.state || !user.address.zipCode) {
+      errors.address = 'Todos los campos de la dirección son obligatorios';
+    }
 
     return errors;
   };
 
   const handleInputChange = (e) => {
-    setUser({
-      ...user,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+
+    if (name.includes('address')) {
+      // Manejando los campos anidados de dirección
+      const [_, field] = name.split('.');
+      setUser({
+        ...user,
+        address: {
+          ...user.address,
+          [field]: value,
+        }
+      });
+    } else {
+      setUser({
+        ...user,
+        [name]: value
+      });
+    }
   };
 
   const handleAvatarUrlChange = () => {
     if (newAvatarUrl) {
-      setUser({ ...user, avatar: newAvatarUrl });
+      setUser({ ...user, profilePicture: newAvatarUrl });
       setNewAvatarUrl(''); 
     }
   };
 
   const handleDeleteAvatar = () => {
-    setUser({ ...user, avatar: defaultAvatar });
+    setUser({ ...user, profilePicture: defaultAvatar });
   };
 
   const toggleEdit = () => {
@@ -80,8 +102,8 @@ function Profile() {
   return (
     <div className="profile-container">
       <div className="profile-header">
-        <img src={user.avatar} alt="Foto de perfil" className="profile-avatar" />
-        <h1>{user.name}</h1>
+        <img src={user.profilePicture} alt="Foto de perfil" className="profile-avatar" />
+        <h1>{user.userName}</h1>
         <p>{user.email}</p>
       </div>
 
@@ -91,12 +113,12 @@ function Profile() {
           <div>
             <input
               type="text"
-              name="name"
-              value={user.name}
+              name="userName"
+              value={user.userName}
               onChange={handleInputChange}
-              placeholder="Nombre"
+              placeholder="Nombre de Usuario"
             />
-            {errors.name && <span className="error">{errors.name}</span>}
+            {errors.userName && <span className="error">{errors.userName}</span>}
           </div>
           <div>
             <input
@@ -110,16 +132,6 @@ function Profile() {
           </div>
           <div>
             <input
-              type="text"
-              name="location"
-              value={user.location}
-              onChange={handleInputChange}
-              placeholder="Ubicación"
-            />
-            {errors.location && <span className="error">{errors.location}</span>}
-          </div>
-          <div>
-            <input
               type="tel"
               name="phone"
               value={user.phone}
@@ -127,6 +139,57 @@ function Profile() {
               placeholder="Teléfono (opcional)"
             />
             {errors.phone && <span className="error">{errors.phone}</span>}
+          </div>
+          <h3>Dirección</h3>
+          <div>
+            <input
+              type="text"
+              name="address.street"
+              value={user.address.street}
+              onChange={handleInputChange}
+              placeholder="Calle"
+            />
+            {errors.address && <span className="error">{errors.address}</span>}
+          </div>
+          <div>
+            <input
+              type="number"
+              name="address.number"
+              value={user.address.number}
+              onChange={handleInputChange}
+              placeholder="Número"
+            />
+            {errors.address && <span className="error">{errors.address}</span>}
+          </div>
+          <div>
+            <input
+              type="text"
+              name="address.city"
+              value={user.address.city}
+              onChange={handleInputChange}
+              placeholder="Ciudad"
+            />
+            {errors.address && <span className="error">{errors.address}</span>}
+          </div>
+          <div>
+            <input
+              type="text"
+              name="address.state"
+              value={user.address.state}
+              onChange={handleInputChange}
+              placeholder="Provincia"
+            />
+            {errors.address && <span className="error">{errors.address}</span>}
+          </div>
+          <div>
+            <input
+              type="text"
+              name="address.zipCode"
+              value={user.address.zipCode}
+              onChange={handleInputChange}
+              placeholder="Código Postal"
+            />
+            {errors.address && <span className="error">{errors.address}</span>}
           </div>
           <label>
             Cambiar foto de perfil (URL):
@@ -145,8 +208,10 @@ function Profile() {
         <div className="profile-details">
           <h2>Detalles del Usuario</h2>
           <ul>
-            <li><strong>Ubicación:</strong> {user.location}</li>
+            <li><strong>Nombre de Usuario:</strong> {user.userName}</li>
+            <li><strong>Correo:</strong> {user.email}</li>
             <li><strong>Teléfono:</strong> {user.phone ? user.phone : 'No especificado'}</li>
+            <li><strong>Dirección:</strong> {user.address.street} {user.address.number}, {user.address.city}, {user.address.state}, {user.address.zipCode}</li>
           </ul>
 
           <div className="button-container">
