@@ -1,19 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../UserProfile/Profile.css';
 
 function Profile() {
   const defaultAvatar = 'https://via.placeholder.com/150'; 
-  const [user, setUser] = useState({
+
+  // Cargar los datos del usuario desde localStorage o establecer los valores por defecto
+  const initialUser = JSON.parse(localStorage.getItem('user')) || {
     name: 'Juan Perez',
     email: 'jperez@gmail.com',
     location: 'Tucuman, Argentina',
-    phone: '+54 3815555555',
-    avatar: defaultAvatar, 
-  });
+    phone: '',
+    avatar: defaultAvatar,
+  };
 
+  const [user, setUser] = useState(initialUser);
   const [isEditing, setIsEditing] = useState(false); 
   const [newAvatarUrl, setNewAvatarUrl] = useState('');
   const [errors, setErrors] = useState({});
+
+  // Guardar los datos en localStorage cada vez que se actualiza el usuario
+  useEffect(() => {
+    localStorage.setItem('user', JSON.stringify(user));
+  }, [user]);
 
   const validateFields = () => {
     let errors = {};
@@ -23,9 +31,8 @@ function Profile() {
     } else if (!/\S+@\S+\.\S+/.test(user.email)) {
       errors.email = 'El formato del correo es inválido';
     }
-    if (!user.phone) {
-      errors.phone = 'El teléfono es requerido';
-    } else if (!/^\+?\d{1,15}$/.test(user.phone)) {
+    // El campo de teléfono no es requerido, pero si se ingresa debe tener el formato correcto
+    if (user.phone && !/^\+?\d{1,15}$/.test(user.phone)) {
       errors.phone = 'El formato del teléfono es inválido';
     }
     if (!user.location) errors.location = 'La ubicación es requerida';
@@ -55,6 +62,7 @@ function Profile() {
     if (isEditing) {
       const validationErrors = validateFields();
       if (Object.keys(validationErrors).length === 0) {
+        // Guardar cambios
         setIsEditing(false);
         setErrors({});
       } else {
@@ -116,7 +124,7 @@ function Profile() {
               name="phone"
               value={user.phone}
               onChange={handleInputChange}
-              placeholder="Teléfono"
+              placeholder="Teléfono (opcional)"
             />
             {errors.phone && <span className="error">{errors.phone}</span>}
           </div>
@@ -138,7 +146,7 @@ function Profile() {
           <h2>Detalles del Usuario</h2>
           <ul>
             <li><strong>Ubicación:</strong> {user.location}</li>
-            <li><strong>Teléfono:</strong> {user.phone}</li>
+            <li><strong>Teléfono:</strong> {user.phone ? user.phone : 'No especificado'}</li>
           </ul>
 
           <div className="button-container">
