@@ -1,10 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import "../../Pages/HomeCards/HomeCards.css";
 import PropTypes from 'prop-types';
+import Swal from 'sweetalert2';  // Importamos SweetAlert2
+import { ShoppingCardContext } from '../../contexts/ShoppingCardContext'; // Importar el contexto
 
 const apiEventUrl = 'http://localhost:4000/api/eventos'; // URL de la API de eventos
 
-const EventCard = ({ date, title, description, imageUrl, price, addToCart }) => {
+const EventCard = ({ date, title, description, imageUrl }) => {
+  const { addItemToCart } = useContext(ShoppingCardContext);  // Usar el contexto para agregar al carrito
+  const price = 35000;  // Precio fijo para los eventos
+
+  const handleAddToCart = () => {
+    // Agregar el evento con el precio fijo al carrito
+    addItemToCart({ id: Math.random(), title, price, type: 'event' });
+
+    // Mostrar SweetAlert2 para indicar éxito
+    Swal.fire({
+      title: 'Evento agregado',
+      text: 'El evento ha sido agregado al carrito con éxito!',
+      icon: 'success',
+      confirmButtonText: 'Aceptar'
+    });
+  };
+
   return (
     <div className="event-card">
       <img src={imageUrl} alt={title} className="img-fluid event-image" />
@@ -12,9 +30,8 @@ const EventCard = ({ date, title, description, imageUrl, price, addToCart }) => 
         <h2>{date}</h2>
         <h3>{title}</h3>
         <p>{description}</p>
-        <p>Precio: ${price}</p>
-        {/* El botón "COMPRAR" llama a addToCart cuando se presiona */}
-        <button className="event-button" onClick={() => addToCart({ _id: Math.random(), title, price })}>
+        <p>Precio: ${price}</p> {/* Mostrar el precio correctamente */}
+        <button className="event-button" onClick={handleAddToCart}>
           COMPRAR
         </button>
       </div>
@@ -26,12 +43,10 @@ EventCard.propTypes = {
   date: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  imageUrl: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-  addToCart: PropTypes.func.isRequired,  // Asegurarse de que addToCart es una función pasada como prop
+  imageUrl: PropTypes.string.isRequired
 };
 
-const EventsSection = ({ addToCart }) => {
+const EventsSection = () => {
   const [events, setEvents] = useState([]);
 
   // Obtener los eventos de la API
@@ -60,8 +75,6 @@ const EventsSection = ({ addToCart }) => {
             title={event.title}
             description={event.description}
             imageUrl={event.image}
-            price={event.price}
-            addToCart={addToCart}  // Pasamos la función addToCart a EventCard
           />
         ))}
       </div>
