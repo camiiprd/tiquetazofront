@@ -1,11 +1,12 @@
 .footer {
   display: flex;
   justify-content: space-between;
-  background-color:  #561C24;
+  background-color: #561C24;
   padding: 5px;
   font-family: Arial, sans-serif;
   border-top: 2px solid #E8D8C4;
   margin-bottom: 0;
+  overflow: hidden; 
 }
 
 .footer-section {
@@ -31,7 +32,6 @@
   margin-bottom: 10px;
 }
 
-
 .footer-section .Text-Footer {
   margin-left: 50%;
   margin-top: 30px;
@@ -42,8 +42,8 @@
   text-align: center;
 }
 
-.footer-section2 .icon{
-display: inline-block;
+.footer-section2 .icon {
+  display: inline-block;
 }
 
 .Text-Footer {
@@ -54,23 +54,21 @@ display: inline-block;
   display: flex;
 }
 
-.footer-section2 .footer-text{
+.footer-section2 .footer-text {
   color: #E8D8C4;
   margin-top: 50px;
   font-size: 20px;
   margin-right: 40px;
-
-
 }
 
-.footer-section2 .Text-contact{
+.footer-section2 .Text-contact {
   margin-right: 30px;
   color: #E8D8C4;
   margin-top: 35px;
   margin-bottom: 30px;
 }
 
-a .icon  {
+a .icon {
   color: #E8D8C4;
   margin-left: 10px;
   font-size: 18px;
@@ -78,7 +76,7 @@ a .icon  {
   display: inline-block;
 }
 
-a :hover {
+a:hover {
   color: #1d1a1a;
 }
 
@@ -99,6 +97,7 @@ p {
   margin-right: 50px;
 }
 
+
 .button-footer {
   background-color: #E8D8C4;
   color: #561C24;
@@ -107,8 +106,10 @@ p {
   border-radius: 10px;
   cursor: pointer;
   transition: 0.3s ease;
-  margin-right: 40px;
-  
+  margin: 20px auto; 
+  display: block; 
+  max-width: 200px; 
+  text-align: center;
 }
 
 .button-footer:hover {
@@ -117,7 +118,7 @@ p {
   border-color: #1d1a1a;
 }
 
-
+/* Ajustes de responsividad */
 @media (max-width: 1000px) {
   .footer {
     flex-direction: column;
@@ -125,29 +126,27 @@ p {
   }
 
   .footer ul {
-    grid-template-columns: 1fr; 
+    grid-template-columns: 1fr;
   }
 
   .footer li {
-    justify-content: flex-start; 
+    justify-content: flex-start;
   }
-  .logo-footer{
+
+  .logo-footer {
     width: 150px;
     margin-right: 50px;
   }
-  
 }
-
 
 @media (max-width: 576px) {
   .Text-Footer {
     font-size: 1rem;
-   margin-right: 80px;
-
+    margin-right: 80px;
   }
 
   .footer li {
-    flex-direction: column; 
+    flex-direction: column;
     text-align: left;
   }
 
@@ -155,22 +154,29 @@ p {
     margin-left: 0;
     margin-top: 5px;
   }
-  .logo-footer{
+
+  .logo-footer {
     width: 100px;
     margin-top: 0;
     margin-right: 50px;
   }
-  .footer-text{
+
+  .footer-text {
     font-size: 1rem;
     margin-left: 30px;
   }
-  .Text-contact{
+
+  .Text-contact {
     margin-left: 50px;
   }
-  p{
+
+  p {
     margin-left: 50px;
   }
-  .button-footer{
+
+  .button-footer {
     margin-left: 50px;
+    max-width: 180px; 
+    text-align: center;
   }
 }

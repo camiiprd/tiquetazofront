@@ -35,6 +35,10 @@ const NavBar = () => {
       
       {/* Iconos de login y carrito */}
       <div className="navbar-icons">
+        <div onClick={() => navigate('/dash')} className="icon">
+          <FontAwesomeIcon icon={faShop} />
+          <span>Dashboard</span>
+        </div>
         <div onClick={() => navigate('/merch')} className="icon">
           <FontAwesomeIcon icon={faShop} />
           <span>Productos</span>
