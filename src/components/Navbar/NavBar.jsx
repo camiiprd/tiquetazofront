@@ -10,9 +10,15 @@ const NavBar = () => {
   const { cartItems } = useContext(ShoppingCardContext);
   const navigate = useNavigate(); 
  
+ // Cargar el usuario desde localStorage
+  const user = JSON.parse(localStorage.getItem('user'));
 
   const handleLoginClick = () => {
-    navigate('/profile'); // Redirige a la página del perfil
+    if (user) {
+      navigate('/profile'); // Redirige a la página del perfil si está logueado
+    } else {
+      navigate('/login'); // Redirige a la página de login si no está logueado
+    }
   };
 
   const handleCartClick = () => {
@@ -42,8 +48,17 @@ const NavBar = () => {
           <span>Contáctanos</span>
         </div>
         <div onClick={handleLoginClick} className="icon">
-          <FontAwesomeIcon icon={faUser} />
-          <span>Ingresar!</span>
+          {user ? (
+            <>
+              <img src={user.profilePicture} alt="Perfil" className="profile-icon" /> {/* Mostrar la foto del perfil */}
+              <span>{user.userName}</span> {/* Mostrar nombre si está logueado */}
+            </>
+          ) : (
+            <>
+              <FontAwesomeIcon icon={faUser} />
+              <span>Ingresar!</span>
+            </>
+          )}
         </div>
         <div onClick={handleCartClick} className="icon">
           <FontAwesomeIcon icon={faShoppingCart} />

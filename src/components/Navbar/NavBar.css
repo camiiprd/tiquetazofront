@@ -1,3 +1,4 @@
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -153,4 +154,10 @@ body {
   .icon {
     margin-right: 0px;
   }
+}
+.profile-icon {
+  width: 30px; /* Ajusta según lo necesario */
+  height: 30px; /* Ajusta según lo necesario */
+  border-radius: 50%; /* Hace que la imagen sea circular */
+  margin-right: 5px; /* Espacio entre la imagen y el texto */
 }
