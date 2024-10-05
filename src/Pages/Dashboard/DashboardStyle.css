@@ -1,166 +1,174 @@
-/* General Styles */
-/* body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  margin: 0;
-  padding: 0;
-}
-
+/* Centrar el contenedor general y aumentar el ancho */
 .container {
-  max-width: 1200px; 
-  margin: 0 auto;
-  padding: 20px; 
+  padding: 20px;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra el contenido horizontalmente */
+  max-width: 1000px; /* Aumenta el ancho máximo del contenedor */
+  margin: 0 auto; /* Centra el contenedor en la página */
 }
 
+/* Títulos del Dashboard */
 h1, h2 {
   color: #333;
-  text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 20px; /* Ajuste del margen inferior */
+  text-align: center; /* Centrar los títulos */
 }
 
+/* Estilo para los labels (Rol, Categoría) */
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px; /* Espacio entre el label y el input/select */
+  text-align: left; /* Alinear las etiquetas a la izquierda */
+}
+
+/* Formularios */
 form {
-  max-width: 600px;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: 70%; /* Aumentamos el ancho del formulario al 70% de la pantalla */
+  margin: 0 auto; /* Centra el formulario horizontalmente */
+  padding: 20px; /* Añadir un poco de padding */
+  background-color: #f9f9f9; /* Fondo del formulario */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra para darle más definición */
+  border-radius: 8px; /* Bordes redondeados */
 }
 
-input, select, textarea {
+input, select, textarea, button {
+  margin-bottom: 15px;
+  padding: 12px; /* Aumentamos un poco el padding */
   width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
+  box-sizing: border-box; /* Para que el padding no aumente el tamaño del input */
 }
 
+/* Ajuste para el selector de "Categoría" y "Rol" */
+.selectCategoria, .selectRol {
+  margin-bottom: 15px;
+  padding: 12px;
+  width: 100%;
+  max-width: 600px; /* Limita el ancho del selector */
+  margin: 0 auto; /* Centra el selector */
+  text-align: left; /* Asegura que el texto dentro del selector esté alineado a la izquierda */
+  box-sizing: border-box;
+}
+
+/* Estilo general de los botones */
 button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 15px;
   border: none;
-  border-radius: 5px;
   cursor: pointer;
-}
-
-button:hover {
-  background-color: #45a049;
-}
-
-.table {
+  padding: 12px;
   width: 100%;
-  margin: 20px 0;
+  font-size: 16px; /* Ajuste del tamaño de la fuente */
+  border-radius: 4px; /* Bordes redondeados */
+  transition: background-color 0.3s ease, border-color 0.3s ease; /* Suavizado de cambio de color */
+}
+
+/* Botón principal - Cambiado a un tono gris oscuro */
+button.btn-primary {
+  background-color: #561C24; /* Vino oscuro */
+  color: #e8d8c4;
+  border: 2px solid #333; /* Borde naranja suave */
+}
+
+button.btn-primary:hover {
+  background-color: #e8d8c4; /* Color al pasar el cursor */
+  color: #561C24;
+  border-color: #561C24; /* Cambia el borde en hover */
+}
+
+/* Botón de peligro - Cambiado a un naranja suave */
+button.btn-danger {
+  background-color: #e8d8c4; /* Beige claro */
+  color: #561C24;
+  border: 2px solid #333; /* Borde naranja suave */
+}
+
+button.btn-danger:hover {
+  background-color: #561C24; /* Color al pasar el cursor */
+  color: #e8d8c4;
+  border-color: #e8d8c4; /* Cambia el borde en hover */
+}
+
+/* Tablas */
+.table {
+  width: 50%; /* La tabla ocupa el 50% de la pantalla */
+  margin: 20px auto; /* Centra la tabla en la página */
   border-collapse: collapse;
 }
 
-.table thead {
-  background-color: #4CAF50;
-  color: white;
-}
-
 .table th, .table td {
+  padding: 12px;
+  text-align: center; /* Centrar contenido de las celdas */
   border: 1px solid #ddd;
-  padding: 12px 15px;
-  text-align: left;
 }
 
 .table th {
-  background-color: #333;
-  color: white;
+  background-color: #561C24;
+  color: #e8d8c4;
 }
 
-.table tbody tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-.table tbody tr:hover {
-  background-color: #ddd;
-}
-
-.btn {
-  padding: 5px 10px;
+/* Estilo normal para el botón de "Crear Categoría" */
+button[type="submit"] {
+  background-color: #561C24; /* Color de fondo inicial */
+  color: #e8d8c4; /* Color de texto */
   border: none;
-  border-radius: 5px;
   cursor: pointer;
-}
-
-.btn-danger {
-  background-color: #e74c3c;
-  color: white;
-}
-
-.btn-danger:hover {
-  background-color: #c0392b;
-}
-
-.btn-primary {
-  background-color: #3498db;
-  color: white;
-}
-
-.btn-primary:hover {
-  background-color: #2980b9;
-} */
-
-/* Event & Categories Styling */
-/* form .category-select {
+  padding: 12px;
   width: 100%;
-  margin-bottom: 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Efecto de suavizado */
 }
 
-img {
-  max-width: 100px;
-  height: auto;
-  display: block;
-  margin: 10px auto;
+/* Hover para el botón de "Crear Categoría" */
+button[type="submit"]:hover {
+  background-color: #e8d8c4; /* Cambia el color de fondo al pasar el cursor */
+  color: #561C24; /* Cambia el color del texto al pasar el cursor */
 }
 
-.event-card {
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 20px;
-  margin: 20px 0;
-  background-color: #fff;
+/* Responsividad para pantallas pequeñas */
+@media (max-width: 768px) {
+  .table {
+    width: 90%; /* Las tablas ocuparán el 90% del ancho en pantallas pequeñas */
+  }
+
+  .table th, .table td {
+    display: block;
+    width: 100%; /* Las celdas ocuparán el 100% del ancho */
+    box-sizing: border-box;
+    text-align: left; /* Alinear el texto de las celdas a la izquierda en pantallas pequeñas */
+    padding: 10px;
+  }
+
+  .table th {
+    background-color: #561C24; /* Fondo del encabezado */
+    color: #e8d8c4;
+  }
+
+  /* Estilo para cada celda de datos (data-label) en pantallas pequeñas */
+  .table td:before {
+    content: attr(data-label); /* Usa data-label para mostrar el título de cada celda en móviles */
+    font-weight: bold;
+    display: block;
+  }
+
+  form {
+    width: 90%; /* En pantallas pequeñas, el formulario ocupará el 90% del ancho */
+  }
 }
 
-.event-card h3 {
-  color: #333;
-  margin: 0 0 10px;
-}
+/* Estilos adicionales para pantallas más pequeñas (menor a 480px) */
+@media (max-width: 480px) {
+  .table td {
+    padding: 6px;
+    font-size: 12px;
+  }
 
-.event-card p {
-  margin: 5px 0;
-}
+  input, select, textarea, button {
+    font-size: 14px;
+  }
 
-.event-card img {
-  margin-top: 10px;
-  max-width: 200px;
+  .container {
+    max-width: 100%; /* Ocupa todo el ancho en pantallas pequeñas */
+  }
 }
-
-.event-actions {
-  display: flex;
-  justify-content: flex-start;
-  gap: 10px;
-}
-
-.event-actions button {
-  padding: 8px 12px;
-}
-
-.event-actions .btn {
-  font-size: 14px;
-}
-
-.category-card {
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 20px;
-  background-color: #fff;
-}
-
-.category-card h3 {
-  color: #333;
-  margin-bottom: 10px;
-} */
