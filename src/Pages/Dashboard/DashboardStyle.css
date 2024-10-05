@@ -1,104 +1,103 @@
-/* Centrar el contenedor general y aumentar el ancho */
 .container {
   padding: 20px;
   background-color: #f9f9f9;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centra el contenido horizontalmente */
-  max-width: 1000px; /* Aumenta el ancho máximo del contenedor */
-  margin: 0 auto; /* Centra el contenedor en la página */
+  align-items: center; 
+  max-width: 1000px;
+  margin: 0 auto; 
 }
 
-/* Títulos del Dashboard */
+
 h1, h2 {
   color: #333;
-  margin-bottom: 20px; /* Ajuste del margen inferior */
-  text-align: center; /* Centrar los títulos */
+  margin-bottom: 20px; 
+  text-align: center; 
 }
 
-/* Estilo para los labels (Rol, Categoría) */
+
 label {
   display: block;
   font-weight: bold;
-  margin-bottom: 8px; /* Espacio entre el label y el input/select */
-  text-align: left; /* Alinear las etiquetas a la izquierda */
+  margin-bottom: 8px; 
+  text-align: left; 
 }
 
-/* Formularios */
+
 form {
-  width: 70%; /* Aumentamos el ancho del formulario al 70% de la pantalla */
-  margin: 0 auto; /* Centra el formulario horizontalmente */
-  padding: 20px; /* Añadir un poco de padding */
-  background-color: #f9f9f9; /* Fondo del formulario */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra para darle más definición */
-  border-radius: 8px; /* Bordes redondeados */
+  width: 70%; 
+  margin: 0 auto; 
+  padding: 20px; 
+  background-color: #f9f9f9; 
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+  border-radius: 8px; 
 }
 
 input, select, textarea, button {
   margin-bottom: 15px;
-  padding: 12px; /* Aumentamos un poco el padding */
+  padding: 12px; 
   width: 100%;
-  box-sizing: border-box; /* Para que el padding no aumente el tamaño del input */
+  box-sizing: border-box; 
 }
 
-/* Ajuste para el selector de "Categoría" y "Rol" */
+
 .selectCategoria, .selectRol {
   margin-bottom: 15px;
   padding: 12px;
   width: 100%;
-  max-width: 600px; /* Limita el ancho del selector */
-  margin: 0 auto; /* Centra el selector */
-  text-align: left; /* Asegura que el texto dentro del selector esté alineado a la izquierda */
+  max-width: 600px; 
+  margin: 0 auto; 
+  text-align: left; 
   box-sizing: border-box;
 }
 
-/* Estilo general de los botones */
+
 button {
   border: none;
   cursor: pointer;
   padding: 12px;
   width: 100%;
-  font-size: 16px; /* Ajuste del tamaño de la fuente */
-  border-radius: 4px; /* Bordes redondeados */
-  transition: background-color 0.3s ease, border-color 0.3s ease; /* Suavizado de cambio de color */
+  font-size: 16px; 
+  border-radius: 4px;
+  transition: background-color 0.3s ease, border-color 0.3s ease; 
 }
 
-/* Botón principal - Cambiado a un tono gris oscuro */
+
 button.btn-primary {
-  background-color: #561C24; /* Vino oscuro */
+  background-color: #561C24; 
   color: #e8d8c4;
-  border: 2px solid #333; /* Borde naranja suave */
+  border: 2px solid #333; 
 }
 
 button.btn-primary:hover {
-  background-color: #e8d8c4; /* Color al pasar el cursor */
+  background-color: #e8d8c4; 
   color: #561C24;
-  border-color: #561C24; /* Cambia el borde en hover */
+  border-color: #561C24; 
 }
 
-/* Botón de peligro - Cambiado a un naranja suave */
+
 button.btn-danger {
-  background-color: #e8d8c4; /* Beige claro */
+  background-color: #e8d8c4; 
   color: #561C24;
-  border: 2px solid #333; /* Borde naranja suave */
+  border: 2px solid #333; 
 }
 
 button.btn-danger:hover {
-  background-color: #561C24; /* Color al pasar el cursor */
+  background-color: #561C24; 
   color: #e8d8c4;
-  border-color: #e8d8c4; /* Cambia el borde en hover */
+  border-color: #e8d8c4; 
 }
 
-/* Tablas */
+
 .table {
-  width: 50%; /* La tabla ocupa el 50% de la pantalla */
-  margin: 20px auto; /* Centra la tabla en la página */
+  width: 50%; 
+  margin: 20px auto; 
   border-collapse: collapse;
 }
 
 .table th, .table td {
   padding: 12px;
-  text-align: center; /* Centrar contenido de las celdas */
+  text-align: center; 
   border: 1px solid #ddd;
 }
 
@@ -107,57 +106,57 @@ button.btn-danger:hover {
   color: #e8d8c4;
 }
 
-/* Estilo normal para el botón de "Crear Categoría" */
+
 button[type="submit"] {
-  background-color: #561C24; /* Color de fondo inicial */
-  color: #e8d8c4; /* Color de texto */
+  background-color: #561C24; 
+  color: #e8d8c4; 
   border: none;
   cursor: pointer;
   padding: 12px;
   width: 100%;
   font-size: 16px;
   border-radius: 4px;
-  transition: background-color 0.3s ease, color 0.3s ease; /* Efecto de suavizado */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Hover para el botón de "Crear Categoría" */
+
 button[type="submit"]:hover {
-  background-color: #e8d8c4; /* Cambia el color de fondo al pasar el cursor */
-  color: #561C24; /* Cambia el color del texto al pasar el cursor */
+  background-color: #e8d8c4; 
+  color: #561C24; 
 }
 
-/* Responsividad para pantallas pequeñas */
+/* Responsividad */
 @media (max-width: 768px) {
   .table {
-    width: 90%; /* Las tablas ocuparán el 90% del ancho en pantallas pequeñas */
+    width: 90%; 
   }
 
   .table th, .table td {
     display: block;
-    width: 100%; /* Las celdas ocuparán el 100% del ancho */
+    width: 100%; 
     box-sizing: border-box;
-    text-align: left; /* Alinear el texto de las celdas a la izquierda en pantallas pequeñas */
+    text-align: left; 
     padding: 10px;
   }
 
   .table th {
-    background-color: #561C24; /* Fondo del encabezado */
+    background-color: #561C24; 
     color: #e8d8c4;
   }
 
-  /* Estilo para cada celda de datos (data-label) en pantallas pequeñas */
+ 
   .table td:before {
-    content: attr(data-label); /* Usa data-label para mostrar el título de cada celda en móviles */
+    content: attr(data-label); 
     font-weight: bold;
     display: block;
   }
 
   form {
-    width: 90%; /* En pantallas pequeñas, el formulario ocupará el 90% del ancho */
+    width: 90%; 
   }
 }
 
-/* Estilos adicionales para pantallas más pequeñas (menor a 480px) */
+
 @media (max-width: 480px) {
   .table td {
     padding: 6px;
@@ -169,6 +168,6 @@ button[type="submit"]:hover {
   }
 
   .container {
-    max-width: 100%; /* Ocupa todo el ancho en pantallas pequeñas */
-  }
+    max-width: 100%; 
+}
 }
