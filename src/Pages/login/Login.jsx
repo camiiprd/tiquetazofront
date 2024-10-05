@@ -13,6 +13,10 @@ const Login = () => {
         navigate('/register')
     }
 
+    const handleLoginClick = () => {
+        navigate('/profile');  // Redirige a la ruta /profile
+      };
+
     const handleLogin = async (e) => {
         e.preventDefault();
 
@@ -61,7 +65,7 @@ const Login = () => {
                     placeholder="Contraseña"
                     required
                 />
-                <button type="submit">Iniciar Sesión</button>
+                <button onClick={handleLoginClick} type="submit">Iniciar Sesión</button>
                 <button onClick={handleNavigate} type="submit">Registrar</button>
             </form>
         </div>
