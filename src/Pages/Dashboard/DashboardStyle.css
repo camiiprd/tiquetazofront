@@ -1,4 +1,4 @@
-.container {
+.container-dashboard {
   padding: 20px;
   background-color: #f9f9f9;
   display: flex;
@@ -9,7 +9,7 @@
 }
 
 
-h1, h2 {
+.username{
   color: #333;
   margin-bottom: 20px; 
   text-align: center; 
