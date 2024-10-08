@@ -71,7 +71,7 @@ const Login = () => {
                     placeholder="Contraseña"
                     required
                 />
-                <button onClick={handleLogin} type="submit">Iniciar Sesión</button>
+                <button onClick={handleLoginClick} type="submit">Iniciar Sesión</button>
                 <button onClick={handleNavigate} type="submit">Registrar</button>
             </form>
         </div>
