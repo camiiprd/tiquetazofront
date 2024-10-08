@@ -18,11 +18,17 @@ const Login = () => {
       };
 
     const handleLogin = async (e) => {
+        console.log('Starting login process...');
         e.preventDefault();
 
         try {
             const response = await axios.post('http://localhost:4000/api/usuarios/login', { email, password });
             console.log(response.data);
+
+            const { token, user } = response.data;
+            localStorage.setItem('token', token);
+            localStorage.setItem('user', JSON.stringify(user));
+
 
             // Manejar respuesta exitosa
             // Aquí puedes almacenar el token o realizar otras acciones necesarias
@@ -49,7 +55,7 @@ const Login = () => {
 
     return (
         <div className="auth-container">
-            <form className="auth-form" onSubmit={handleLogin}>
+            <form className="auth-form">
                 <h2>Iniciar Sesión</h2>
                 <input
                     type="email"
@@ -65,7 +71,7 @@ const Login = () => {
                     placeholder="Contraseña"
                     required
                 />
-                <button onClick={handleLoginClick} type="submit">Iniciar Sesión</button>
+                <button onClick={handleLogin} type="submit">Iniciar Sesión</button>
                 <button onClick={handleNavigate} type="submit">Registrar</button>
             </form>
         </div>

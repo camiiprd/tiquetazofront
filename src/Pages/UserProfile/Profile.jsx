@@ -108,6 +108,7 @@ function Profile() {
   const confirmLogout = () => {
     setShowModal(false); 
     localStorage.removeItem('user'); 
+    localStorage.removeItem('token');
     navigate('/login'); // Utiliza navigate en lugar de window.location.href
   };
 
