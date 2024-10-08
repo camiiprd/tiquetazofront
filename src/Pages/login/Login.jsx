@@ -17,24 +17,24 @@ const Login = () => {
         navigate('/profile');  // Redirige a la ruta /profile
       };
 
-    const handleLogin = async (e) => {
+      const handleLogin = async (e) => {
         console.log('Starting login process...');
         e.preventDefault();
-
+    
         try {
-            const response = await axios.post('http://localhost:4000/api/usuarios/login', { email, password });
+            const response = await axios.post('http://localhost:4000/api/usuarios/login', 
+                { email, password }, 
+                { withCredentials: true }
+            );
+    
             console.log(response.data);
-
+    
             const { token, user } = response.data;
             localStorage.setItem('token', token);
             localStorage.setItem('user', JSON.stringify(user));
-
-
-            // Manejar respuesta exitosa
-            // Aquí puedes almacenar el token o realizar otras acciones necesarias
-
+    
             // Redirigir a la página de inicio
-            navigate("/"); // Redirigir a la página de inicio
+            navigate("/"); 
         } catch (error) {
             Swal({
                 title: 'Error',
