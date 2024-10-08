@@ -83,8 +83,8 @@ const UserDash = () => {
   };
 
   return (
-    <div className="container">
-      <h1>Usuarios</h1>
+    <div className="container-dashboard">
+      <h1 className='username'>Usuarios</h1>
 
       
       <form onSubmit={editingUser ? handleUpdateUser : handleCreateUser}>
@@ -131,7 +131,7 @@ const UserDash = () => {
         <button type="submit">{editingUser ? 'Actualizar' : 'Crear'} Usuario</button>
       </form>
 
-      <h2>Lista de Usuarios</h2>
+      <h2 className='username'>Lista de Usuarios</h2>
       <table className="table">
         <thead>
           <tr>
