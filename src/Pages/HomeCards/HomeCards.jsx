@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import "../../Pages/HomeCards/HomeCards.css";
 import PropTypes from 'prop-types';
-import Swal from 'sweetalert2';  // Importamos SweetAlert2
 import { ShoppingCardContext } from '../../contexts/ShoppingCardContext'; // Importar el contexto
+import { Modal, Button } from 'react-bootstrap'; // Importar Modal de Bootstrap
 
 const apiEventUrl = 'http://localhost:4000/api/eventos'; // URL de la API de eventos
 
@@ -10,17 +10,14 @@ const EventCard = ({ date, title, description, imageUrl }) => {
   const { addItemToCart } = useContext(ShoppingCardContext);  // Usar el contexto para agregar al carrito
   const price = 35000;  // Precio fijo para los eventos
 
+  const [show, setShow] = useState(false); // Estado para controlar el modal
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const handleAddToCart = () => {
     // Agregar el evento con el precio fijo al carrito
     addItemToCart({ id: Math.random(), title, price, type: 'event' });
-
-    // Mostrar SweetAlert2 para indicar éxito
-    Swal.fire({
-      title: 'Evento agregado',
-      text: 'El evento ha sido agregado al carrito con éxito!',
-      icon: 'success',
-      confirmButtonText: 'Aceptar'
-    });
+    handleShow(); // Mostrar el modal
   };
 
   return (
@@ -35,6 +32,19 @@ const EventCard = ({ date, title, description, imageUrl }) => {
           COMPRAR
         </button>
       </div>
+
+      {/* Modal para mostrar el éxito */}
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Evento agregado</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>El evento ha sido agregado al carrito con éxito!</Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleClose}>
+            Aceptar
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };
