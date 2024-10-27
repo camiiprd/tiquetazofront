@@ -47,9 +47,9 @@ const ShoppingCart = () => {
         <div className="cart-items">
           {cartItems.map((item) => (
             <div key={item.id} className="cart-item">
-              <h3 className='text-event'>{item.title} {item.type === 'event' ? '(Evento)' : '(Producto de Merchandising)'}</h3>
-              <p className='text-event'>Precio: ${item.price}</p>
-              <p className='text-event'>Cantidad: {item.quantity}</p>
+              <h3>{item.title} {item.type === 'event' ? '(Evento)' : '(Producto de Merchandising)'}</h3>
+              <p>Precio: ${item.price}</p>
+              <p>Cantidad: {item.quantity}</p>
               <div className="quantity-controls">
                 <button onClick={() => handleDecreaseQuantity(item.id)}>-</button>
                 <span>{item.quantity}</span>

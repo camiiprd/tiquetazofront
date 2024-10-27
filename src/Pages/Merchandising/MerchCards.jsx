@@ -1,7 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import "./MerchCards.css";
-import { Card, Button, Container, Row, Col, Modal } from "react-bootstrap";
+import { Card, Button, Container, Row, Col } from "react-bootstrap";
 import { ShoppingCardContext } from "../../contexts/ShoppingCardContext";
+import Swal from 'sweetalert2';  // Importamos SweetAlert2
 
 const merchItems = [
   {
@@ -79,17 +80,17 @@ const merchItems = [
 const MerchCards = () => {
   const { addItemToCart } = useContext(ShoppingCardContext);
 
-  const [show, setShow] = useState(false); // Estado para controlar el modal
-  const [currentItem, setCurrentItem] = useState(null); // Estado para guardar el item actual
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
   const handleAddToCart = (item) => {
     // Añadir el producto al carrito
     addItemToCart(item);
-    setCurrentItem(item); // Guardar el item actual
-    handleShow(); // Mostrar el modal
+
+    // Mostrar SweetAlert para indicar éxito
+    Swal.fire({
+      title: 'Producto agregado',
+      text: 'El producto ha sido agregado al carrito con éxito!',
+      icon: 'success',
+      confirmButtonText: 'Aceptar'
+    });
   };
 
   return (
@@ -102,7 +103,7 @@ const MerchCards = () => {
               <Card.Body>
                 <Card.Title>{item.title}</Card.Title>
                 <Card.Text>{item.description}</Card.Text>
-                <Card.Text className="price">${item.price}</Card.Text>
+                <Card.Text className="price">{item.price}</Card.Text>
                 <div className="buy-button">
                   <Button 
                     variant="primary" 
@@ -115,21 +116,6 @@ const MerchCards = () => {
           </Col>
         ))}
       </Row>
-
-      {/* Modal para mostrar el éxito */}
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Producto agregado</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          {currentItem ? `${currentItem.title} ha sido agregado al carrito con éxito!` : 'Producto agregado al carrito con éxito!'}
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary" onClick={handleClose}>
-            Aceptar
-          </Button>
-        </Modal.Footer>
-      </Modal>
     </Container>
   );
 };

@@ -13,12 +13,6 @@
   transform: translateY(-10px);
 }
 
-.merch-card .card-text {
-  color: #561c24; /* Cambia este color por el que prefieras */
-  font-size: 16px; /* Ajusta el tamaño de la fuente si lo deseas */
-}
-
-
 #merch-cards-container .merch-card img {
   width: 100%;
   height: 300px;
