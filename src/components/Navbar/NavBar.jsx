@@ -1,3 +1,4 @@
+
 import React, { useContext } from 'react';
 import '../NavBar/NavBar.css';
 import { useNavigate } from "react-router-dom";
@@ -67,6 +68,10 @@ const NavBar = () => {
         <div onClick={handleCartClick} className="icon">
           <FontAwesomeIcon icon={faShoppingCart} />
           <span>Carrito ({cartItems.length})</span> {/* Muestra la cantidad de artículos */}
+        </div>
+        <div onClick={() => navigate('/mypurchases')} className="icon">
+          <FontAwesomeIcon icon={faShoppingCart} />
+          <span>Mis Compras</span>
         </div>
       </div>
     </nav>
