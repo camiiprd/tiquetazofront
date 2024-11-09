@@ -50,11 +50,10 @@
     height: 50px;
     background: #E8D8C4;
     text-align: center;
-    transition: 0.1s;
     border-radius: 30px;
     color: #561C24;
     font-size: 35px;
-    padding-top: 0px;
+    transition: background-color 0.1s;
 }
 
 .links > a:hover {
@@ -64,64 +63,40 @@
 form {
     display: flex;
     flex-direction: column;
-    text-align: right;
     gap: 15px;
-    padding-top: 40px;
 }
 
 .input-box {
-    position: relative;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .input-box > input,
 .input-box > textarea {
     width: 100%;
-    padding: 0 10px;
-    outline: none;
-    background-color: #ffffff;
-    border: 3px solid transparent;
-    letter-spacing: 1px;
+    padding: 8px 10px;
+    border: 2px solid transparent;
+    border-radius: 5px;
     transition: 0.2s;
-    color: #000000;
-}
-
-.input-box > input {
-    height: 40px;
-}
-
-.input-box > textarea {
-    height: 90px;
-    resize: vertical; 
-}
-
-.input-box > input::placeholder,
-.input-box > textarea::placeholder {
-    color: #992828;
-    font-size: 20px;
-}
-
-.input-box > input:focus::placeholder,
-.input-box > textarea:focus::placeholder {
-    color: #E8D8C4;
 }
 
 .input-box > input:focus,
 .input-box > textarea:focus {
-    border-bottom: 3px solid #561C24;
+    border: 2px solid #561C24;
+}
+
+.error {
+    color: #d9534f;
+    font-size: 14px;
 }
 
 form > button {
-    width: 100%;
     padding: 10px;
-    outline: none;
     background: #E8D8C4;
     color: #561C24;
-    border: none;
-    transition: 0.1s;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 1rem;
 }
 
 form > button:hover {
@@ -129,61 +104,9 @@ form > button:hover {
     color: #E8D8C4;
 }
 
-/* Media Queries */
 @media screen and (max-width: 768px) {
     #container {
-        grid-template-columns: 1fr; /* Cambia a una sola columna en pantallas pequeñas */
+        grid-template-columns: 1fr;
         padding: 20px;
-        margin-top: 90px; /* Ajusta el margen superior */
-    }
-
-    .box-info {
-        gap: 25px;
-    }
-
-    .box-info > h1 {
-        font-size: 16px; /* Aumenta el tamaño de fuente */
-        text-align: left;
-    }
-
-    form {
-        padding-top: 20px;
-    }
-
-    form > button {
-        width: 100%; /* Asegúrate de que el botón ocupe el 100% */
-    }
-
-    .input-box > input,
-    .input-box > textarea {
-        width: 100%; /* Asegúrate de que los campos de entrada ocupen el 100% */
-    }
-    .data > p {
-        margin-left: 0px;
-    }
-}
-
-@media screen and (max-width: 600px) {
-    #container {
-        width: 95%;
-        margin: 20px auto;
-        margin-top: 90px; /* Ajusta el margen superior */
-    }
-
-    .box-info > h1 {
-        font-size: 16px; /* Aumenta el tamaño de fuente */
-        text-align: left;
-    }
-
-    .input-box > input,
-    .input-box > textarea {
-        width: 100%; /* Asegúrate de que los campos de entrada ocupen el 100% */
-    }
-
-    .input-box > textarea {
-        height: 100px; /* Ajusta la altura de la textarea */
-    }
-    .data > p {
-        margin-left: 0px;
     }
 }
