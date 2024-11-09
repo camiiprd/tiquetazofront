@@ -1,114 +1,160 @@
-/* Contenedor principal del dashboard */
-.container-dashboard {
-  padding: 20px;
-  background-color: #f9f9f9;
-  display: flex;
-  flex-direction: column;
-  align-items: center; 
-  max-width: 1000px;
-  margin: 0 auto; 
-}
-
-/* Nombre de usuario */
-.username{
-  color: #333;
-  margin-bottom: 20px; 
-  text-align: center; 
-}
-
-/* Estilos del formulario */
-form {
-  width: 70%; 
-  margin: 0 auto; 
-  padding: 20px; 
-  background-color: #f9f9f9; 
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
-  border-radius: 8px; 
-}
-
-/* Ajustes del input, select, textarea, y botón */
-input, select, textarea, button {
-  margin-bottom: 15px;
-  padding: 12px; 
-  width: 100%;
-  box-sizing: border-box; 
-}
-
-/* Estilo para la tabla */
-.table {
-  width: 100%; /* Ajuste para ocupar todo el ancho del contenedor */
-  max-width: 1000px; /* Máximo ancho de la tabla */
-  margin: 20px auto; 
-  border-collapse: collapse;
-  overflow-x: auto; /* Para que sea manejable en caso de desbordamiento */
-}
-
-/* Estilo para las celdas de la tabla */
-.table th, .table td {
-  padding: 12px;
-  text-align: center; 
-  border: 1px solid #ddd;
-}
-
-.table th {
+.shopping-cart {
+  padding: 30px;
   background-color: #561C24;
-  color: #e8d8c4;
+  color: #E8D8C4;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  max-width: 800px;
+  margin: 30px auto;
+  transition: all 0.3s ease;
 }
 
-/* Estilo de botones */
-button {
-  border: none;
-  cursor: pointer;
-  padding: 12px;
-  width: 100%;
-  font-size: 16px; 
-  border-radius: 4px;
-  transition: background-color 0.3s ease, border-color 0.3s ease; 
-}
-
-/* Estilos para botones específicos */
-button.btn-primary {
-  background-color: #561C24; 
-  color: #e8d8c4;
-  border: 2px solid #333; 
-}
-
-button.btn-primary:hover {
-  background-color: #e8d8c4; 
-  color: #561C24;
-  border-color: #561C24; 
-}
-
-/* Responsividad */
 @media (max-width: 768px) {
-  .table {
-    width: 100%; /* Ocupar todo el ancho disponible en pantallas pequeñas */
-  }
-
-  .table th, .table td {
-    display: block;
-    width: 100%; 
-    box-sizing: border-box;
-    text-align: left; 
-    padding: 10px;
-  }
-
-  form {
-    width: 90%; /* Ajustar el formulario en pantallas más pequeñas */
+  .shopping-cart {
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 95%;
   }
 }
 
-@media (max-width: 480px) {
-  .table td {
-    padding: 6px;
-    font-size: 12px;
-  }
+h1 {
+  text-align: center;
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  color: #E8D8C4;
+}
 
-  input, select, textarea, button {
-    font-size: 14px;
-  }
+.cart-items {
+  max-height: 400px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
 
-  .container {
-    max-width: 100%; 
+.cart-item {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  margin: 15px 0;
+  background-color: #f7f7f7;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.2s ease-in-out;
+  color: #561C24;
+}
+
+@media (max-width: 768px) {
+  .cart-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
+}
+
+.text-event {
+  font-size: 1.2em;
+  margin-bottom: 8px;
+  color: #561C24;
+  font-weight: bold;
+  flex: 1;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.quantity-controls button {
+  background-color: #561C24;
+  color: #E8D8C4;
+  border: 2px solid #E8D8C4; /* Borde agregado */
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 8px 12px;
+  margin: 0 5px;
+  transition: background-color 0.3s, border-color 0.3s;
+  font-size: 1.1em;
+}
+
+.quantity-controls button:hover {
+  background-color: #E8D8C4;
+  border-color: #561C24; /* Cambia el color del borde al hacer hover */
+  color: #561C24;
+}
+
+.quantity-controls span {
+  padding: 0 10px;
+  font-size: 1.2em;
+  color: #561C24;
+  text-align: center;
+}
+
+.cart-total {
+  margin-top: 30px;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: right;
+  color: #E8D8C4;
+}
+
+.cart-actions {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.cart-actions button {
+  padding: 12px 20px;
+  background-color: #E8D8C4;
+  color: #561C24;
+  border: 2px solid #561C24; /* Borde agregado */
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+  font-size: 1em;
+  width: 45%;
+}
+
+.cart-actions button:hover {
+  background-color: #561C24;
+  color: #E8D8C4;
+  border-color: #E8D8C4; /* Cambia el color del borde al hacer hover */
+}
+
+@media (max-width: 768px) {
+  .cart-actions button {
+    width: 48%;
+    padding: 10px;
+    font-size: 0.9em;
+  }
+}
+
+/* Modal estilos */
+.modal-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  border: 4px solid #561C24;
+  max-width: 400px;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+/* Scrollbar personalizado para cart-items */
+.cart-items::-webkit-scrollbar {
+  width: 6px;
+}
+
+.cart-items::-webkit-scrollbar-thumb {
+  background-color: #561C24;
+  border-radius: 4px;
+}
+
+.cart-items::-webkit-scrollbar-thumb:hover {
+  background-color: #c9302c;
 }
