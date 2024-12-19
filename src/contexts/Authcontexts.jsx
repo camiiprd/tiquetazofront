@@ -1,5 +1,7 @@
 import { createContext, useState, useContext, useEffect } from "react";
-import { registerRequest, loginRequest } from "../api/auth.js";
+
+import { registerRequest, loginRequest } from "../../src/api/auth.js";
+
 import { set } from "react-hook-form";
 
 
@@ -61,6 +63,4 @@ export const AuthProvider = ({ children }) => {
     </AuthContext.Provider>
   );
 };
-
-
 
