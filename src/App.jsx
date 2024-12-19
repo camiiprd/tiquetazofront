@@ -17,9 +17,12 @@ import Login from "./Pages/login/Login.jsx";
 import Register from "./Pages/register/Register.jsx";
 import ShoppingCart from './Pages/ShoppingCart/ShoppingCart.jsx';
 import Profile from "./Pages/UserProfile/Profile.jsx";
+import MyPurchases from './Pages/MyPurchases/MyPurchases';
+
 
 function App() {
   return (
+    
     <ShoppingCardProvider>
       <NavBar />  {/* No necesitamos pasar cartItems y setCartItems aquí, ya que se manejarán por el contexto */}
 
@@ -71,10 +74,12 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/carrito" element={<ShoppingCart />} />
+        <Route path="/mypurchases" element={<MyPurchases />} />
       </Routes>
       
       <Footer />
     </ShoppingCardProvider>
+
   );
 }
 
