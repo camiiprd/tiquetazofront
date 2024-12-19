@@ -13,11 +13,11 @@ import UserDash from "./Pages/Dashboard/Dashboard.user.jsx";
 import Event from "./Pages/Dashboard/dashboard.event.jsx";
 import { ShoppingCardProvider } from "./contexts/ShoppingCardContext";
 import MerchCards from './Pages/Merchandising/MerchCards.jsx'; 
-import Login from "./Pages/login/Login.jsx";
-import Register from "./Pages/register/Register.jsx";
 import ShoppingCart from './Pages/ShoppingCart/ShoppingCart.jsx';
 import Profile from "./Pages/UserProfile/Profile.jsx";
 import MyPurchases from './Pages/MyPurchases/MyPurchases';
+import Login from "./Pages/login/Login.jsx";
+import Register from "./Pages/register/Register.jsx";
 
 
 function App() {
