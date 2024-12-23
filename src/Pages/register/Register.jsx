@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../contexts/Authcontexts.jsx";
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 
 function Register() {
   const {
@@ -63,6 +64,9 @@ function Register() {
           )
         }
         <button type="submit">Registrar</button>
+        <p className="text-black flex gap-x-2 justify-between">
+        ¿Tienes cuenta aún? <Link to="/login" className="text-decoration-none">Registrar</Link>
+      </p>
       </form>
     </div>
   );

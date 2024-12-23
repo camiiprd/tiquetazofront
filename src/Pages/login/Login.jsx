@@ -1,14 +1,20 @@
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../contexts/Authcontexts.jsx";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
-  const { register, handleSubmit, formState: {errors} } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { signIn, errors: signinErrors } = useAuth();
+  const navigate = useNavigate();  // Usamos el hook useNavigate para redirigir.
 
-  const {signIn, errors: signinErrors} = useAuth()
+  const onSubmit = handleSubmit(async (data) => {
+    // Intentamos iniciar sesión con los datos proporcionados.
+    await signIn(data);
 
-  const onSubmit = handleSubmit((data) => {
-    signIn(data);
+    // Si el inicio de sesión es exitoso, redirigimos al perfil.
+    if (signinErrors.length === 0) {  // Verificamos que no haya errores de inicio de sesión.
+      navigate("/");  // Redirige al perfil después de iniciar sesión.
+    }
   });
 
   return (
@@ -26,10 +32,10 @@ function Login() {
           type="email"
           {...register("email", { required: true })}
           className="w-full bg-zinc-700  px-4 py-2 rounded-md my-2"
-          placeholder="Correo Electronico"
+          placeholder="Correo Electrónico"
         />
         {errors.email && (
-          <p className="text-red-500"> Correo Electronico Requerido</p>
+          <p className="text-red-500">Correo Electrónico Requerido</p>
         )}
         <input
           type="password"
@@ -38,15 +44,14 @@ function Login() {
           placeholder="Contraseña"
         />
         {errors.password && (
-          <p className="text-red-500"> Contraseña Requerido</p>
+          <p className="text-red-500">Contraseña Requerida</p>
         )}
 
         <button type="submit">Ingresar</button>
         <p className="text-black flex gap-x-2 justify-between">
-        ¿No tienes cuenta aún? <Link to="/register" className="text-decoration-none">Registrar</Link>
-      </p>
+          ¿No tienes cuenta aún? <Link to="/register" className="text-decoration-none">Registrar</Link>
+        </p>
       </form>
-      
     </div>
   );
 }
